@@ -1,4 +1,4 @@
-package com.example.ejercicioEJ2Refactorizado.infrastructure.errorcontroller;
+package com.example.ejercicioBS8.infrastructure.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +8,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.util.Date;
 
+//Clase para introducir mi customizacion a los errores recibidos
 @RestControllerAdvice
 public class CustomizedResponseEntityExceptionHandler {
 

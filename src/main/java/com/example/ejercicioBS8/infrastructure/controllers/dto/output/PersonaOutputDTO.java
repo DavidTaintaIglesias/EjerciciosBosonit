@@ -1,26 +1,25 @@
-package com.example.ejercicioEJ2Refactorizado.infrastructure.controllers.dto.output;
+package com.example.ejercicioBS8.infrastructure.controllers.dto.output;
 
-import com.example.ejercicioEJ2Refactorizado.domain.PersonaEntity;
+import com.example.ejercicioBS8.domain.PersonaEntity;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class PersonaOutputDTO implements Serializable {
+public class PersonaOutputDTO {
 
     private int id;
     private String user;
     private String password;
     private String name;
     private String surname;
-    private String company_email;
-    private String personal_email;
+    private String companyEmail;
+    private String personalEmail;
     private String city;
     private Boolean active;
     private Date date;
-    private String image_url;
-    private Date termination_date;
+    private String imageUrl;
+    private Date terminationDate;
 
     public PersonaOutputDTO (PersonaEntity personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
         id=(personaEntity.getId());
@@ -28,12 +27,12 @@ public class PersonaOutputDTO implements Serializable {
         password=(personaEntity.getPassword());
         name=(personaEntity.getName());
         surname=(personaEntity.getSurname());
-        company_email=(personaEntity.getCompany_email());
-        personal_email=(personaEntity.getPersonal_email());
+        companyEmail =(personaEntity.getCompanyEmail());
+        personalEmail =(personaEntity.getPersonalEmail());
         city=(personaEntity.getCity());
         active=(personaEntity.getActive());
         date=(personaEntity.getDate());
-        image_url=(personaEntity.getImage_url());
-        termination_date=(personaEntity.getTermination_date());
+        imageUrl =(personaEntity.getImageUrl());
+        terminationDate =(personaEntity.getTerminationDate());
     }
 }

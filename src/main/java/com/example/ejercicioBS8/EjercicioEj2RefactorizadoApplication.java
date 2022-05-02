@@ -1,4 +1,4 @@
-package com.example.ejercicioEJ2Refactorizado;
+package com.example.ejercicioBS8;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

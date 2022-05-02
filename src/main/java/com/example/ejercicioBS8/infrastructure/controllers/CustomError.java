@@ -1,7 +1,8 @@
-package com.example.ejercicioEJ2Refactorizado.infrastructure.errorcontroller;
+package com.example.ejercicioBS8.infrastructure.controllers;
 
 import java.util.Date;
 
+//Clase para customizar el JSON de respuesta
 public class CustomError {
 
     private Date timestamp;

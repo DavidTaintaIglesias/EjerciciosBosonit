@@ -1,4 +1,4 @@
-package com.example.ejercicioEJ2Refactorizado;
+package com.example.ejercicioBS8;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
