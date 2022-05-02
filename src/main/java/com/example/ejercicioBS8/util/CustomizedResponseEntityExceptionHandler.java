@@ -1,5 +1,8 @@
-package com.example.ejercicioBS8.infrastructure.controllers;
+package com.example.ejercicioBS8.util;
 
+import com.example.ejercicioBS8.util.CustomError;
+import com.example.ejercicioBS8.util.NotFoundException;
+import com.example.ejercicioBS8.util.UnprocessableException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

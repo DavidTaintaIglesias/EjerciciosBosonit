@@ -1,4 +1,4 @@
-package com.example.ejercicioBS8.infrastructure.controllers;
+package com.example.ejercicioBS8.util;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

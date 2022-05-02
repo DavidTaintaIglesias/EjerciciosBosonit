@@ -1,7 +1,7 @@
 package com.example.ejercicioBS8.application;
 
 import com.example.ejercicioBS8.domain.PersonaEntity;
-import com.example.ejercicioBS8.infrastructure.controllers.NotFoundException;
+import com.example.ejercicioBS8.util.NotFoundException;
 import com.example.ejercicioBS8.infrastructure.controllers.dto.input.PersonaInputDTO;
 import com.example.ejercicioBS8.infrastructure.controllers.dto.output.PersonaOutputDTO;
 import com.example.ejercicioBS8.infrastructure.repository.PersonaRepository;

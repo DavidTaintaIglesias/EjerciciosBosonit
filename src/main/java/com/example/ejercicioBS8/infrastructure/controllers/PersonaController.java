@@ -3,6 +3,8 @@ package com.example.ejercicioBS8.infrastructure.controllers;
 import com.example.ejercicioBS8.application.PersonaService;
 import com.example.ejercicioBS8.infrastructure.controllers.dto.input.PersonaInputDTO;
 import com.example.ejercicioBS8.infrastructure.controllers.dto.output.PersonaOutputDTO;
+import com.example.ejercicioBS8.util.NotFoundException;
+import com.example.ejercicioBS8.util.UnprocessableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.web.bind.annotation.*;
