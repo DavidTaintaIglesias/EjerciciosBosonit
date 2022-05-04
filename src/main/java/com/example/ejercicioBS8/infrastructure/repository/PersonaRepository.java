@@ -1,6 +1,6 @@
 package com.example.ejercicioBS8.infrastructure.repository;
 
-import com.example.ejercicioBS8.domain.PersonaEntity;
+import com.example.ejercicioBS8.domain.entities.PersonaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

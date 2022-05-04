@@ -1,4 +1,4 @@
-package com.example.ejercicioBS8.domain;
+package com.example.ejercicioBS8.domain.entities;
 
 import com.example.ejercicioBS8.infrastructure.controllers.dto.input.PersonaInputDTO;
 import com.sun.istack.NotNull;

@@ -1,4 +1,4 @@
-package com.example.ejercicioBS8.util;
+package com.example.ejercicioBS8.application.exceptions;
 
 import java.util.Date;
 

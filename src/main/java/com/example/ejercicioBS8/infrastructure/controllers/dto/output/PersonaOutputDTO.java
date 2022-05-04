@@ -1,6 +1,6 @@
 package com.example.ejercicioBS8.infrastructure.controllers.dto.output;
 
-import com.example.ejercicioBS8.domain.PersonaEntity;
+import com.example.ejercicioBS8.domain.entities.PersonaEntity;
 import lombok.Data;
 
 import java.util.Date;
