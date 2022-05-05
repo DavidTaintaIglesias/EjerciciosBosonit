@@ -5,7 +5,8 @@ import lombok.Data;
 @Data
 public class StudentInputDTO {
 
-    private int idPersona;
+    private Integer idPerson;
     private int numHours;
     private String coments;
+    private String branch;
 }

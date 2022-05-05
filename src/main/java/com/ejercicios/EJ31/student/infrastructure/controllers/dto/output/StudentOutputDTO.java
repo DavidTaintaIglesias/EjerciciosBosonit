@@ -7,14 +7,16 @@ import lombok.Data;
 public class StudentOutputDTO {
 
     private Integer id;
-    private Integer idPersona;
+    private Integer idPerson;
     private int numHours;
     private String coments;
+    private String branch;
 
     public StudentOutputDTO (StudentEntity studentEntity){
         setId(studentEntity.getId());
-        setIdPersona(studentEntity.getPersona().getId());
+        setIdPerson(studentEntity.getIdPerson());
         setNumHours(studentEntity.getNumHours());
         setComents(studentEntity.getComents());
+        setBranch(studentEntity.getBranch());
     }
 }

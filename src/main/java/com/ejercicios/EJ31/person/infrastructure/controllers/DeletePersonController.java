@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/deleteperson")
+@RequestMapping("/EJ31")
 public class DeletePersonController {
 
     @Autowired
     DeletePersonService deletePersonService;
 
-    @DeleteMapping("/{id}")
-    public String deleteById (@PathVariable int id){
+  @DeleteMapping("/deleteperson/{id}")
+  public String deleteById(@PathVariable int id) {
         return deletePersonService.deleteById(id);
     }
 }

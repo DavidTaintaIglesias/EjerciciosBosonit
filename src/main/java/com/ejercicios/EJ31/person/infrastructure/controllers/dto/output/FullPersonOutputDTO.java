@@ -1,12 +1,14 @@
 package com.ejercicios.EJ31.person.infrastructure.controllers.dto.output;
 
 import com.ejercicios.EJ31.person.domain.entities.PersonEntity;
+import com.ejercicios.EJ31.profesor.domain.entities.ProfesorEntity;
+import com.ejercicios.EJ31.student.domain.entities.StudentEntity;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class PersonOutputDTO {
+public class FullPersonOutputDTO {
 
     private int id;
     private String user;
@@ -20,10 +22,10 @@ public class PersonOutputDTO {
     private Date date;
     private String imageUrl;
     private Date terminationDate;
-    private Integer idProfesor;
-    private Integer idStudent;
+    private StudentEntity studentEntity;
+    private ProfesorEntity profesorEntity;
 
-    public PersonOutputDTO(PersonEntity personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
+    public FullPersonOutputDTO(PersonEntity personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
         id=(personaEntity.getId());
         user=(personaEntity.getUser());
         password=(personaEntity.getPassword());
@@ -36,12 +38,11 @@ public class PersonOutputDTO {
         date=(personaEntity.getDate());
         imageUrl =(personaEntity.getImageUrl());
         terminationDate =(personaEntity.getTerminationDate());
-        if(personaEntity.getProfesorEntity()!=null){
-            idProfesor=personaEntity.getProfesorEntity().getId();
-        }
         if(personaEntity.getStudentEntity()!=null){
-            idStudent = personaEntity.getStudentEntity().getId();
+            studentEntity=personaEntity.getStudentEntity();
         }
-
+        if(personaEntity.getProfesorEntity()!=null){
+            profesorEntity=personaEntity.getProfesorEntity();
+        }
     }
 }

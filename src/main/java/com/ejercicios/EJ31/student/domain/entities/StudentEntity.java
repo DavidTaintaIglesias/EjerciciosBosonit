@@ -19,9 +19,8 @@ public class StudentEntity implements Serializable {
     @Column(name = "id_student")
     Integer id;
 
-    @OneToOne
-    @JoinColumn(name = "id_persona")
-    PersonEntity persona;
+    @Column(name = "id_person")
+    Integer idPerson;
 
     @Column(name = "num_hours_week")
     int numHours;
@@ -29,8 +28,13 @@ public class StudentEntity implements Serializable {
     @Column(name = "coments")
     String coments;
 
+    @Column(name = "branch")
+    String branch;
+
     public StudentEntity (StudentInputDTO studentInputDTO){
+        setIdPerson(studentInputDTO.getIdPerson());
         setNumHours(studentInputDTO.getNumHours());
         setComents(studentInputDTO.getComents());
+        setBranch(studentInputDTO.getBranch());
     }
 }
