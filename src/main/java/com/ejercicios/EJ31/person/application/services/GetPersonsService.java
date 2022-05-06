@@ -1,7 +1,7 @@
 package com.ejercicios.EJ31.person.application.services;
 
 import com.ejercicios.EJ31.person.infrastructure.controllers.dto.output.FullPersonOutputDTO;
-import com.ejercicios.EJ31.shared.exceptions.NotFoundException;
+import com.ejercicios.shared.exceptions.NotFoundException;
 import com.ejercicios.EJ31.person.domain.entities.PersonEntity;
 import com.ejercicios.EJ31.person.infrastructure.controllers.dto.output.PersonOutputDTO;
 import com.ejercicios.EJ31.person.infrastructure.repository.PersonRepository;

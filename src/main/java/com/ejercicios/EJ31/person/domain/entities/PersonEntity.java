@@ -63,12 +63,10 @@ public class PersonEntity implements Serializable {
     @Column(name = "terminationDate")
     Date terminationDate;
 
-    @OneToOne
-    @JoinColumn(name = "id_student")
+    @OneToOne(mappedBy = "personEntity", fetch = FetchType.LAZY)
     StudentEntity studentEntity;
 
-    @OneToOne
-    @JoinColumn(name = "id_profesor")
+    @OneToOne(mappedBy = "personEntity", fetch = FetchType.LAZY)
     ProfesorEntity profesorEntity;
 
 

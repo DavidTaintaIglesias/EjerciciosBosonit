@@ -1,12 +1,9 @@
 package com.ejercicios.EJ31.person.infrastructure.controllers;
 
 import com.ejercicios.EJ31.person.application.services.GetPersonsService;
-import com.ejercicios.EJ31.person.infrastructure.controllers.dto.output.PersonOutputDTO;
-import com.ejercicios.EJ31.shared.exceptions.UnprocessableException;
+import com.ejercicios.shared.exceptions.UnprocessableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/EJ31/getperson")

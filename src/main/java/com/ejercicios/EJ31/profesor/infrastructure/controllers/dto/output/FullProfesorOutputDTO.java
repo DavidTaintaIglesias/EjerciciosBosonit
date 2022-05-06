@@ -14,6 +14,7 @@ public class FullProfesorOutputDTO {
 
     public FullProfesorOutputDTO (ProfesorEntity profesorEntity){
         setId(profesorEntity.getId());
+        setPerson(profesorEntity.getPersonEntity());
         setComents(profesorEntity.getComents());
         setBranch(profesorEntity.getBranch());
     }

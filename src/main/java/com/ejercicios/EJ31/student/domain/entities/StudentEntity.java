@@ -1,12 +1,14 @@
 package com.ejercicios.EJ31.student.domain.entities;
 
 import com.ejercicios.EJ31.person.domain.entities.PersonEntity;
+import com.ejercicios.EJ31.schoolsubjet.domain.entities.SchoolSubjetEntity;
 import com.ejercicios.EJ31.student.infrastructure.controllers.dto.input.StudentInputDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -19,8 +21,9 @@ public class StudentEntity implements Serializable {
     @Column(name = "id_student")
     Integer id;
 
-    @Column(name = "id_person")
-    Integer idPerson;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_person")
+    PersonEntity personEntity;
 
     @Column(name = "num_hours_week")
     int numHours;
@@ -31,10 +34,17 @@ public class StudentEntity implements Serializable {
     @Column(name = "branch")
     String branch;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_subjet")
+    List<SchoolSubjetEntity> subjetList;
+
     public StudentEntity (StudentInputDTO studentInputDTO){
-        setIdPerson(studentInputDTO.getIdPerson());
         setNumHours(studentInputDTO.getNumHours());
         setComents(studentInputDTO.getComents());
         setBranch(studentInputDTO.getBranch());
+    }
+
+    public void addSubjet (SchoolSubjetEntity subjet){
+        subjetList.add(subjet);
     }
 }

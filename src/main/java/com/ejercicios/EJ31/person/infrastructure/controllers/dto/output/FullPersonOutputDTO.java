@@ -25,6 +25,7 @@ public class FullPersonOutputDTO {
     private StudentEntity studentEntity;
     private ProfesorEntity profesorEntity;
 
+
     public FullPersonOutputDTO(PersonEntity personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
         id=(personaEntity.getId());
         user=(personaEntity.getUser());

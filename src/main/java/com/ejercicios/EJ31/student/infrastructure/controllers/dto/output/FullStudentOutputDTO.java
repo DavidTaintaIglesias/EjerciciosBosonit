@@ -15,6 +15,7 @@ public class FullStudentOutputDTO {
 
     public FullStudentOutputDTO (StudentEntity studentEntity){
         setId(studentEntity.getId());
+        setPerson(studentEntity.getPersonEntity());
         setNumHours(studentEntity.getNumHours());
         setComents(studentEntity.getComents());
         setBranch(studentEntity.getBranch());

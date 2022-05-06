@@ -6,8 +6,8 @@ import com.ejercicios.EJ31.profesor.domain.entities.ProfesorEntity;
 import com.ejercicios.EJ31.profesor.infrastructure.controllers.dto.input.ProfesorInputDTO;
 import com.ejercicios.EJ31.profesor.infrastructure.controllers.dto.output.ProfesorOutputDTO;
 import com.ejercicios.EJ31.profesor.infrastructure.repository.ProfesorRepository;
-import com.ejercicios.EJ31.shared.exceptions.NotFoundException;
-import com.ejercicios.EJ31.shared.exceptions.UnprocessableException;
+import com.ejercicios.shared.exceptions.NotFoundException;
+import com.ejercicios.shared.exceptions.UnprocessableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +25,7 @@ public class PostProfesorService {
         PersonEntity personEntity = personRepository.findById(profesorInputDTO.getIdPerson()).orElseThrow(()-> new NotFoundException("No existe persona con ese ID"));
         if(personEntity.getStudentEntity()==null){
             if(personEntity.getProfesorEntity()==null){
+                profesorEntity.setPersonEntity(personEntity);
                 profesorRepository.save(profesorEntity);
                 personEntity.setProfesorEntity(profesorEntity);
                 personRepository.save(personEntity);

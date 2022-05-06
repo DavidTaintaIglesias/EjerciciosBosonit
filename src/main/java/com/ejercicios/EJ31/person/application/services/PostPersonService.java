@@ -1,6 +1,6 @@
 package com.ejercicios.EJ31.person.application.services;
 
-import com.ejercicios.EJ31.shared.exceptions.UnprocessableException;
+import com.ejercicios.shared.exceptions.UnprocessableException;
 import com.ejercicios.EJ31.person.domain.entities.PersonEntity;
 import com.ejercicios.EJ31.person.infrastructure.controllers.dto.input.PersonInputDTO;
 import com.ejercicios.EJ31.person.infrastructure.controllers.dto.output.PersonOutputDTO;

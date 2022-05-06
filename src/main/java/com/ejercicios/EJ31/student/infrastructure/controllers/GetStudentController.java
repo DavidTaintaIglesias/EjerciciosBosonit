@@ -1,6 +1,6 @@
 package com.ejercicios.EJ31.student.infrastructure.controllers;
 
-import com.ejercicios.EJ31.shared.exceptions.UnprocessableException;
+import com.ejercicios.shared.exceptions.UnprocessableException;
 import com.ejercicios.EJ31.student.application.services.GetStudentService;
 import com.ejercicios.EJ31.student.infrastructure.controllers.dto.output.StudentOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;

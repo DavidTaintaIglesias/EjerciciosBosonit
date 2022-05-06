@@ -1,6 +1,6 @@
 package com.ejercicios.EJ31.student.application.services;
 
-import com.ejercicios.EJ31.shared.exceptions.NotFoundException;
+import com.ejercicios.shared.exceptions.NotFoundException;
 import com.ejercicios.EJ31.student.domain.entities.StudentEntity;
 import com.ejercicios.EJ31.student.infrastructure.controllers.dto.output.FullStudentOutputDTO;
 import com.ejercicios.EJ31.student.infrastructure.controllers.dto.output.StudentOutputDTO;

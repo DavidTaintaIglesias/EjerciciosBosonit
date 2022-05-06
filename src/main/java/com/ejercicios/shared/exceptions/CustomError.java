@@ -1,4 +1,4 @@
-package com.ejercicios.EJ31.shared.exceptions;
+package com.ejercicios.shared.exceptions;
 
 import java.util.Date;
 

@@ -18,8 +18,9 @@ public class ProfesorEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @Column(name = "id_person")
-    Integer idPerson;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_person")
+    PersonEntity personEntity;
 
     @Column(name = "coments")
     String coments;
@@ -28,7 +29,6 @@ public class ProfesorEntity implements Serializable {
     String branch;
 
     public ProfesorEntity (ProfesorInputDTO profesorInputDTO){
-        setIdPerson(profesorInputDTO.getIdPerson());
         setComents(profesorInputDTO.getComents());
         setBranch(profesorInputDTO.getBranch());
     }

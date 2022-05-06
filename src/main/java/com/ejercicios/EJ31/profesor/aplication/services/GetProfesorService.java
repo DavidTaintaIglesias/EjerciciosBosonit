@@ -4,7 +4,7 @@ import com.ejercicios.EJ31.profesor.domain.entities.ProfesorEntity;
 import com.ejercicios.EJ31.profesor.infrastructure.controllers.dto.output.FullProfesorOutputDTO;
 import com.ejercicios.EJ31.profesor.infrastructure.controllers.dto.output.ProfesorOutputDTO;
 import com.ejercicios.EJ31.profesor.infrastructure.repository.ProfesorRepository;
-import com.ejercicios.EJ31.shared.exceptions.NotFoundException;
+import com.ejercicios.shared.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -2,8 +2,8 @@ package com.ejercicios.EJ31.student.application.services;
 
 import com.ejercicios.EJ31.person.domain.entities.PersonEntity;
 import com.ejercicios.EJ31.person.infrastructure.repository.PersonRepository;
-import com.ejercicios.EJ31.shared.exceptions.NotFoundException;
-import com.ejercicios.EJ31.shared.exceptions.UnprocessableException;
+import com.ejercicios.shared.exceptions.NotFoundException;
+import com.ejercicios.shared.exceptions.UnprocessableException;
 import com.ejercicios.EJ31.student.domain.entities.StudentEntity;
 import com.ejercicios.EJ31.student.infrastructure.controllers.dto.input.StudentInputDTO;
 import com.ejercicios.EJ31.student.infrastructure.controllers.dto.output.StudentOutputDTO;
@@ -25,6 +25,7 @@ public class PostStudentService {
         PersonEntity personaEntity = personRepository.findById(studentInputDTO.getIdPerson()).orElseThrow(()-> new NotFoundException("No hay personas con ese ID"));
         if(personaEntity.getProfesorEntity()==null){
             if(personaEntity.getStudentEntity()==null){
+                studentEntity.setPersonEntity(personaEntity);
                 studentRepository.save(studentEntity);
                 personaEntity.setStudentEntity(studentEntity);
                 personRepository.save(personaEntity);
@@ -32,5 +33,6 @@ public class PostStudentService {
         } else throw new UnprocessableException("La persona elegida es profesor no puede ser estudiante");
         StudentOutputDTO studentOutputDTO = new StudentOutputDTO(studentEntity);
         return studentOutputDTO;
+        //error contiene persona a estudiante y al revs todo el rato, solucionar
     }
 }

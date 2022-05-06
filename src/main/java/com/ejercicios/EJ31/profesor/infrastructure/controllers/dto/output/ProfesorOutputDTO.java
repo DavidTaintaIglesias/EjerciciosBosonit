@@ -13,7 +13,7 @@ public class ProfesorOutputDTO {
 
     public ProfesorOutputDTO (ProfesorEntity profesorEntity){
         setId(profesorEntity.getId());
-        setIdPerson(profesorEntity.getIdPerson());
+        setIdPerson(profesorEntity.getPersonEntity().getId());
         setComents(profesorEntity.getComents());
         setBranch(profesorEntity.getBranch());
     }

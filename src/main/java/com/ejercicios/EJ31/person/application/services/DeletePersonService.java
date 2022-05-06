@@ -1,6 +1,6 @@
 package com.ejercicios.EJ31.person.application.services;
 
-import com.ejercicios.EJ31.shared.exceptions.NotFoundException;
+import com.ejercicios.shared.exceptions.NotFoundException;
 import com.ejercicios.EJ31.person.infrastructure.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
