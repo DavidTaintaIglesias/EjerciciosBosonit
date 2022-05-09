@@ -15,19 +15,19 @@ import org.springframework.stereotype.Service;
 public class PostClientService {
 
     @Autowired
-    ClientRepository clientRepository;
+    ClientRepository studentRepository;
 
     @Autowired
-    UserRepository userRepository;
+    UserRepository personRepository;
 
     public ClientOutputDTO postClient(ClientInputDTO clientInputDTO){
         ClientEntity clientEntity = new ClientEntity(clientInputDTO);
-        UserEntity userEntity = userRepository.findById(clientInputDTO.getIdUser()).orElseThrow(()->new NotFoundException("Id de usuario no encontrado"));
+        UserEntity userEntity = personRepository.findById(clientInputDTO.getIdUser()).orElseThrow(()->new NotFoundException("Id de usuario no encontrado"));
         if(userEntity.getIdClient()==null){
             clientEntity.setUser(userEntity);
-            clientRepository.save(clientEntity);
+            studentRepository.save(clientEntity);
             userEntity.setIdClient(clientEntity.getId());
-            userRepository.save(userEntity);
+            personRepository.save(userEntity);
         } else throw new UnprocessableException("Este usuario ya tiene otro cliente asignado");
         ClientOutputDTO clientOutputDTO = new ClientOutputDTO(clientEntity);
         return clientOutputDTO;

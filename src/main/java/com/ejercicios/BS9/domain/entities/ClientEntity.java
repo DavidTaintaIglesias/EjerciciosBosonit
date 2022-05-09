@@ -1,7 +1,6 @@
 package com.ejercicios.BS9.domain.entities;
 
 import com.ejercicios.BS9.infrastructure.controllers.dto.input.ClientInputDTO;
-import com.ejercicios.BS9.domain.entities.UserEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,7 +25,7 @@ public class ClientEntity implements Serializable {
     @Column(name = "num_of_orders")
     int orders;
 
-    public ClientEntity (ClientInputDTO clientInputDTO){
+    public ClientEntity(ClientInputDTO clientInputDTO){
         setOrders(clientInputDTO.getOrders());
     }
 }

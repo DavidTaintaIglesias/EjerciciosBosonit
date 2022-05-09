@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class StudentEntity implements Serializable {
     @Column(name = "id_student")
     Integer id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "id_person")
     PersonEntity personEntity;
 
@@ -32,9 +33,8 @@ public class StudentEntity implements Serializable {
     @Column(name = "branch")
     String branch;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_subjet")
-    List<SchoolSubjetEntity> subjetList;
+    @OneToMany
+    List<SchoolSubjetEntity> subjetList = new ArrayList<>();
 
     public StudentEntity (StudentInputDTO studentInputDTO){
         setNumHours(studentInputDTO.getNumHours());

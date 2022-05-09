@@ -30,7 +30,7 @@ public class UserEntity implements Serializable {
     @Column(name = "id_client")
     Integer idClient;
 
-    public UserEntity (UserInputDTO userInputDTO){
+    public UserEntity(UserInputDTO userInputDTO){
         setName(userInputDTO.getName());
         setSurname(userInputDTO.getSurname());
         setAge(userInputDTO.getAge());

@@ -20,6 +20,7 @@ public class SchoolSubjetEntity implements Serializable {
     Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_student")
     StudentEntity studentEntity;
 
     @Column(name = "name")

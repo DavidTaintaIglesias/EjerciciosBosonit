@@ -2,8 +2,10 @@ package com.ejercicios.BS9.infrastructure.controllers.dto.output;
 
 import com.ejercicios.BS9.domain.entities.ClientEntity;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class ClientOutputDTO {
 
     private Integer id;

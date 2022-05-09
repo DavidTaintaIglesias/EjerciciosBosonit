@@ -1,6 +1,5 @@
 package com.ejercicios.EJ31.domain.entities;
 
-import com.ejercicios.EJ31.domain.entities.PersonEntity;
 import com.ejercicios.EJ31.infrastructure.controllers.dto.input.ProfesorInputDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;

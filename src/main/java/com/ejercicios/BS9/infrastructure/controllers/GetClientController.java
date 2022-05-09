@@ -22,6 +22,7 @@ public class GetClientController {
 
     @GetMapping("/byid/{id}")
     public Object getById(@PathVariable int id, @RequestParam(defaultValue = "simple") String outputType){
+        System.out.println("Client devuelte el cliente pedido en User"+id);
         if(outputType.equals("simple")){
             return getClientService.getById(id);
         } else if(outputType.equals("full")){
