@@ -3,7 +3,6 @@ package com.ejercicios.BS9.infrastructure.feign;
 
 import com.ejercicios.BS9.infrastructure.controllers.dto.output.ClientOutputDTO;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -12,5 +11,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface IFeignClient {
 
     @GetMapping("/{id}")
-    ResponseEntity<ClientOutputDTO> callClient(@PathVariable int id);
+    ClientOutputDTO callClient(@PathVariable int id); //Le paso por parametro la variable que luego sera el id final que consultare en mi nueva URL
 }
