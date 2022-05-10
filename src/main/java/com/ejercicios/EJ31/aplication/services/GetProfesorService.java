@@ -22,7 +22,7 @@ public class GetProfesorService {
     }
 
     public ProfesorOutputDTO getProfesorById(int id){
-        ProfesorOutputDTO profesorOutputDTO= new ProfesorOutputDTO(profesorRepository.findById(id).orElseThrow(()->new NotFoundException("ID no encontrado")));
+        ProfesorOutputDTO profesorOutputDTO = new ProfesorOutputDTO(profesorRepository.findById(id).orElseThrow(()->new NotFoundException("ID no encontrado")));
         return profesorOutputDTO;
     }
 
