@@ -23,11 +23,11 @@ public class PostStudentService {
     public StudentOutputDTO postStudent(StudentInputDTO studentInputDTO){
         StudentEntity studentEntity = new StudentEntity(studentInputDTO);
         PersonEntity personaEntity = personRepository.findById(studentInputDTO.getIdPerson()).orElseThrow(()-> new NotFoundException("No hay personas con ese ID"));
-        if(personaEntity.getProfesorEntity()==null){
-            if(personaEntity.getStudentEntity()==null){
+        if(personaEntity.getIdProfesor()==null){
+            if(personaEntity.getIdStudent()==null){
                 studentEntity.setPersonEntity(personaEntity);
                 studentRepository.save(studentEntity);
-                personaEntity.setStudentEntity(studentEntity);
+                personaEntity.setIdStudent(studentEntity.getId());
                 personRepository.save(personaEntity);
             } else throw new UnprocessableException("La persona tiene un id de alumno asignado");
         } else throw new UnprocessableException("La persona elegida es profesor no puede ser estudiante");

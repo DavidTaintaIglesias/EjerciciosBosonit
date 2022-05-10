@@ -60,13 +60,17 @@ public class PersonEntity implements Serializable {
     String imageUrl;
     @Column(name = "terminationDate")
     Date terminationDate;
+    @Column(name = "id_student")
+    Integer idStudent;
+    @Column(name = "id_profesor")
+    Integer idProfesor;
 
-    @OneToOne(mappedBy = "personEntity", fetch = FetchType.LAZY)
+    /*@OneToOne(mappedBy = "personEntity", fetch = FetchType.LAZY)
     StudentEntity studentEntity;
 
     @OneToOne(mappedBy = "personEntity", fetch = FetchType.LAZY)
     ProfesorEntity profesorEntity;
-
+    */
 
     public PersonEntity(PersonInputDTO personaDTO){//Creo un costructor que recibe personaDTO
         //Como id es autoincrementable no pongo ningun set para el ya que se añadirá solo

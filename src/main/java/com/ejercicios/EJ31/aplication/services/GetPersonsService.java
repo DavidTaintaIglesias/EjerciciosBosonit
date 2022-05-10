@@ -1,6 +1,9 @@
 package com.ejercicios.EJ31.aplication.services;
 
 import com.ejercicios.EJ31.infrastructure.controllers.dto.output.FullPersonOutputDTO;
+import com.ejercicios.EJ31.infrastructure.controllers.dto.output.ProfesorOutputDTO;
+import com.ejercicios.EJ31.infrastructure.repository.ProfesorRepository;
+import com.ejercicios.EJ31.infrastructure.repository.StudentRepository;
 import com.ejercicios.shared.exceptions.NotFoundException;
 import com.ejercicios.EJ31.domain.entities.PersonEntity;
 import com.ejercicios.EJ31.infrastructure.controllers.dto.output.PersonOutputDTO;
@@ -15,6 +18,12 @@ public class GetPersonsService {
 
     @Autowired
     PersonRepository personaRepository;
+
+    @Autowired
+    StudentRepository studentRepository;
+
+    @Autowired
+    ProfesorRepository profesorRepository;
 
     public List<PersonOutputDTO> getAll(){
         List<PersonEntity> personas = personaRepository.findAll();
@@ -32,7 +41,14 @@ public class GetPersonsService {
     }
 
     public FullPersonOutputDTO getFullById(int id){
-        FullPersonOutputDTO fullPersonOutputDTO = new FullPersonOutputDTO(personaRepository.findById(id).orElseThrow(()->new NotFoundException("Id no encontrado")));
+        PersonEntity person = personaRepository.findById(id).orElseThrow(()-> new NotFoundException("Id no encontrado"));
+        FullPersonOutputDTO fullPersonOutputDTO = new FullPersonOutputDTO(person);
+        if(person.getIdProfesor()!=null){
+            fullPersonOutputDTO.setProfesorEntity(profesorRepository.getById(person.getIdProfesor()));
+        }
+        if(person.getIdStudent()!=null){
+            fullPersonOutputDTO.setStudentEntity(studentRepository.getById(person.getIdStudent()));
+        }
         return fullPersonOutputDTO;
     }
 

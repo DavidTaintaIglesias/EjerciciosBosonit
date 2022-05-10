@@ -9,7 +9,6 @@ import java.util.Date;
 public class SchoolSubjetOutputDTO {
 
     private Integer id;
-    private Integer idStudent;
     private String subjetName;
     private String coments;
     private Date initialDate;
@@ -17,7 +16,6 @@ public class SchoolSubjetOutputDTO {
 
     public SchoolSubjetOutputDTO(SchoolSubjetEntity schoolSubjetEntity){
         setId(schoolSubjetEntity.getId());
-        setIdStudent(schoolSubjetEntity.getStudentEntity().getId());
         setSubjetName(schoolSubjetEntity.getSubjetName());
         setComents(schoolSubjetEntity.getComents());
         setInitialDate(schoolSubjetEntity.getInitialDate());

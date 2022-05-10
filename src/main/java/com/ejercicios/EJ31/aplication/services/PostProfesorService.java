@@ -23,13 +23,13 @@ public class PostProfesorService {
     public ProfesorOutputDTO postProfesor(ProfesorInputDTO profesorInputDTO){
         ProfesorEntity profesorEntity = new ProfesorEntity(profesorInputDTO);
         PersonEntity personEntity = personRepository.findById(profesorInputDTO.getIdPerson()).orElseThrow(()-> new NotFoundException("No existe persona con ese ID"));
-        if(personEntity.getStudentEntity()==null){
-            if(personEntity.getProfesorEntity()==null){
+        if(personEntity.getIdStudent()==null){
+            if(personEntity.getIdProfesor()==null){
                 profesorEntity.setPersonEntity(personEntity);
                 profesorRepository.save(profesorEntity);
-                personEntity.setProfesorEntity(profesorEntity);
+                personEntity.setIdProfesor(profesorEntity.getId());
                 personRepository.save(personEntity);
-            }else throw new UnprocessableException("La persona ya tiene un id de profesor asignado");
+            } else throw new UnprocessableException("La persona ya tiene un id de profesor asignado");
         } else throw new UnprocessableException("La persona ya es alumno no puede ser profesor");
         ProfesorOutputDTO profesorOutputDTO = new ProfesorOutputDTO(profesorEntity);
         return profesorOutputDTO;

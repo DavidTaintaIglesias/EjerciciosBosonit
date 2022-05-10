@@ -19,9 +19,10 @@ public class SchoolSubjetEntity implements Serializable {
     @Column(name = "id_subjet")
     Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_student")
     StudentEntity studentEntity;
+    */
 
     @Column(name = "name")
     String subjetName;

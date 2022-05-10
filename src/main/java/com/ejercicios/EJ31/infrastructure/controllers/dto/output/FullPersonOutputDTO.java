@@ -26,7 +26,7 @@ public class FullPersonOutputDTO {
     private ProfesorEntity profesorEntity;
 
 
-    public FullPersonOutputDTO(PersonEntity personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
+    public FullPersonOutputDTO(PersonEntity personaEntity){//Constructor que recibe entity y lo convierte en outputDTO
         id=(personaEntity.getId());
         user=(personaEntity.getUser());
         password=(personaEntity.getPassword());
@@ -39,11 +39,5 @@ public class FullPersonOutputDTO {
         date=(personaEntity.getDate());
         imageUrl =(personaEntity.getImageUrl());
         terminationDate =(personaEntity.getTerminationDate());
-        if(personaEntity.getStudentEntity()!=null){
-            studentEntity=personaEntity.getStudentEntity();
-        }
-        if(personaEntity.getProfesorEntity()!=null){
-            profesorEntity=personaEntity.getProfesorEntity();
-        }
     }
 }

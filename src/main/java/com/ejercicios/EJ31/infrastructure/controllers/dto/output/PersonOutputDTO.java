@@ -36,12 +36,8 @@ public class PersonOutputDTO {
         date=(personaEntity.getDate());
         imageUrl =(personaEntity.getImageUrl());
         terminationDate =(personaEntity.getTerminationDate());
-        if(personaEntity.getStudentEntity()!=null){
-            idStudent=personaEntity.getStudentEntity().getId();
-        }
-        if(personaEntity.getProfesorEntity()!=null){
-         idProfesor = personaEntity.getProfesorEntity().getId();
-        }
+        idProfesor=(personaEntity.getIdProfesor());
+        idStudent=personaEntity.getIdStudent();
 
     }
 }

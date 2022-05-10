@@ -21,13 +21,14 @@ public class GetProfesorService {
         return profesors.stream().map(ProfesorOutputDTO::new).toList();
     }
 
-    public ProfesorOutputDTO getPofesorById(int id){
+    public ProfesorOutputDTO getProfesorById(int id){
         ProfesorOutputDTO profesorOutputDTO= new ProfesorOutputDTO(profesorRepository.findById(id).orElseThrow(()->new NotFoundException("ID no encontrado")));
         return profesorOutputDTO;
     }
 
     public FullProfesorOutputDTO getFullProfesorById(int id){
         FullProfesorOutputDTO fullProfesorOutputDTO = new FullProfesorOutputDTO(profesorRepository.findById(id).orElseThrow(()->new NotFoundException("ID no encontrado")));
+        //System.out.println(fullProfesorOutputDTO);
         return fullProfesorOutputDTO;
     }
 

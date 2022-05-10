@@ -22,11 +22,8 @@ public class StudentOutputDTO {
         setNumHours(studentEntity.getNumHours());
         setComents(studentEntity.getComents());
         setBranch(studentEntity.getBranch());
-        if(studentEntity.getSubjetList()!=null){
-            for(int i=0; i<studentEntity.getSubjetList().size();i++){
-                subjets.add(studentEntity.getSubjetList().get(i).getId());
-            }
+        for(int i =0; i<studentEntity.getSubjetList().size(); i++){
+            subjets.add(studentEntity.getSubjetList().get(i).getId());
         }
-
     }
 }

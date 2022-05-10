@@ -21,12 +21,8 @@ public class PostSubjetService {
 
     public SchoolSubjetOutputDTO postSubjet(SchoolSubjetInputDTO schoolSubjetInputDTO){
         SchoolSubjetEntity subjet = new SchoolSubjetEntity(schoolSubjetInputDTO);
-        StudentEntity studentEntity = studentRepository.findById(schoolSubjetInputDTO.getIdStudent()).orElseThrow(()-> new NotFoundException("Id no encontrado"));
-        subjet.setStudentEntity(studentEntity);
         subjetRepository.save(subjet);
-        studentEntity.addSubjet(subjet);
-        studentRepository.save(studentEntity);
-        SchoolSubjetOutputDTO schoolSubjetOutputDTO = new SchoolSubjetOutputDTO(subjet);
-        return schoolSubjetOutputDTO;
+        SchoolSubjetOutputDTO subjetOutputDTO = new SchoolSubjetOutputDTO(subjet);
+        return subjetOutputDTO;
     }
 }

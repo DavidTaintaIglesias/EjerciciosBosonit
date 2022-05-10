@@ -23,20 +23,12 @@ public class GetStudentService {
     }
 
     public StudentOutputDTO getStudentById(int id){
-        try{
-            StudentOutputDTO studentOutputDTO = new StudentOutputDTO(studentRepository.getById(id));
-            return studentOutputDTO;
-        } catch (EntityNotFoundException es){
-            throw new NotFoundException("Id no encontrado");
-        }
+        StudentOutputDTO studentOutputDTO = new StudentOutputDTO(studentRepository.findById(id).orElseThrow(()-> new NotFoundException("Id no encontrado")));
+        return studentOutputDTO;
     }
 
     public FullStudentOutputDTO getFullStudentById(int id){
-        try{
-            FullStudentOutputDTO fullStudentOutputDTO = new FullStudentOutputDTO(studentRepository.getById(id));
-            return fullStudentOutputDTO;
-        } catch (EntityNotFoundException es){
-            throw new NotFoundException("Id no encontrado");
-        }
+        FullStudentOutputDTO fullStudentOutputDTO = new FullStudentOutputDTO(studentRepository.findById(id).orElseThrow(()-> new NotFoundException("Id no encontrado")));
+        return fullStudentOutputDTO;
     }
 }
