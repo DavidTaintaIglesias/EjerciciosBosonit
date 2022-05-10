@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 //Etiqueta para crear la interfaz de Feign a la que llamare
 @FeignClient(name = "feignClient", url = "http://localhost:8080/BS9/getclient/byid/")//Url a la que hago la llamada para obtener los datos
+//Declaro la variable url en propierties y asi puedo cambiar de servidor facilmente sin cambiar codigo
 public interface IFeignClient {
 
     @GetMapping("/{id}")
