@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/EJ2")
@@ -18,24 +18,24 @@ public class GetController {
   PersonaService personaService;
 
   //Ver todos los valores
-  @GetMapping("/getall")
-  public ArrayList<PersonaOutputDTO> getPersonas() {
+  @GetMapping
+  public List<PersonaOutputDTO> getPersonas() {
 
-    return personaService.getAll();
+    return personaService.getAll().stream().map(PersonaOutputDTO::new).toList();
   }
 
   //Buscar por id
-  @GetMapping("/getbyid/{id}")
+  @GetMapping("/{id}")
   public PersonaOutputDTO getPersonById(@PathVariable int id) throws Exception {
 
-    return personaService.getById(id);
+    return new PersonaOutputDTO(personaService.getById(id));
   }
 
   //Buscar por User
   @GetMapping("/getbyuser/{user}")
-  public ArrayList<PersonaOutputDTO> getPersonByUser(@PathVariable String user) {
+  public List<PersonaOutputDTO> getPersonByUser(@PathVariable String user) {
 
-    return personaService.getByUser(user);
+    return personaService.getByUser(user).stream().map(PersonaOutputDTO::new).toList();
   }
 
 }

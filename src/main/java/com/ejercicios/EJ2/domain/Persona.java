@@ -4,26 +4,24 @@ import com.ejercicios.EJ2.infrastructure.controllers.dto.input.PersonaInputDTO;
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDate;
 
 //Hacer las entidades serializables
 @Entity
-@Component //Para poder hacer el @Autowired
 @Data
 @NoArgsConstructor
-public class Persona {
+public class Persona implements Serializable {
 
   @Id
   @GeneratedValue
-  @Column(name = "PersonId")
+  @Column(name = "person_id")
   Integer id;
-
 
   @NotNull
   @Column(name = "user")
@@ -42,11 +40,11 @@ public class Persona {
   String surname;
 
   @NotNull
-  @Column(name = "companyEmail")
+  @Column(name = "company_email")
   String companyEmail;
 
   @NotNull
-  @Column(name = "personalEmail")
+  @Column(name = "personal_email")
   String personalEmail;
 
   @NotNull
@@ -59,12 +57,13 @@ public class Persona {
 
   @NotNull
   @Column(name = "date")
-  Date date;
+  LocalDate date;
 
-  @Column(name = "imaage_url")
+  @Column(name = "image_url")
   String imageUrl;
-  @Column(name = "terminationDate")
-  Date terminationDate;
+
+  @Column(name = "termination_date")
+  LocalDate terminationDate;
 
   public Persona(PersonaInputDTO personaDTO) {//Creo un costructor que recibe personaDTO
     //Como id es autoincrementable no pongo ningun set para el ya que se añadirá solo
@@ -77,7 +76,7 @@ public class Persona {
     date = personaDTO.getDate();
     personalEmail = personaDTO.getPersonalEmail();
     surname = personaDTO.getSurname();
-    terminationDate = personaDTO.getTermination_date();
+    terminationDate = personaDTO.getTerminationDate();
     user = personaDTO.getUser();
   }
 

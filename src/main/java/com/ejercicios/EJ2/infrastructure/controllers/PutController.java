@@ -1,10 +1,12 @@
 package com.ejercicios.EJ2.infrastructure.controllers;
 
 import com.ejercicios.EJ2.application.PersonaService;
+import com.ejercicios.EJ2.domain.Persona;
 import com.ejercicios.EJ2.infrastructure.controllers.dto.input.PersonaInputDTO;
 import com.ejercicios.EJ2.infrastructure.controllers.dto.output.PersonaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,10 +17,14 @@ public class PutController {
   PersonaService personaService;
 
   //Modificar por id (problemas con el autoincrement)
-  @PutMapping("/put/{id}")
-  public PersonaOutputDTO putById(@PathVariable int id, @RequestBody PersonaInputDTO personaInputDTO) throws EmptyResultDataAccessException {
+  @PutMapping("{id}")
+  public ResponseEntity<PersonaOutputDTO> editPersona(@PathVariable int id, @RequestBody PersonaInputDTO personaInputDTO) throws Exception {
 
-    return personaService.putById(id, personaInputDTO);
+    Persona newPersona = personaService.editPersona(id, personaInputDTO);
+
+    PersonaOutputDTO outputDto = new PersonaOutputDTO(newPersona);
+
+    return new ResponseEntity<>(outputDto, HttpStatus.OK);
   }
 
 }
