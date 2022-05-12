@@ -3,7 +3,7 @@ package com.ejercicios.BS9.aplication.services;
 import com.ejercicios.BS9.domain.entities.UserEntity;
 import com.ejercicios.BS9.infrastructure.controllers.dto.output.UserOutputDTO;
 import com.ejercicios.BS9.infrastructure.repository.UserRepository;
-import com.ejercicios.shared.exceptions.NotFoundException;
+import com.ejercicios.shared.exceptions.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class GetUserService {
     }
 
     public UserOutputDTO getById(int id){
-        UserOutputDTO userOutputDTO = new UserOutputDTO(userRepository.findById(id).orElseThrow(()->new NotFoundException("ID no encontrado")));
+        UserOutputDTO userOutputDTO = new UserOutputDTO(userRepository.findById(id).orElseThrow(()->new NotFound("ID no encontrado")));
         return userOutputDTO;
     }
 }

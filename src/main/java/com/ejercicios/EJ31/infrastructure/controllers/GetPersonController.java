@@ -1,48 +1,34 @@
 package com.ejercicios.EJ31.infrastructure.controllers;
 
-import com.ejercicios.EJ31.aplication.services.GetPersonsService;
-import com.ejercicios.shared.exceptions.UnprocessableException;
+import com.ejercicios.EJ31.application.services.GetPersonService;
+import com.ejercicios.EJ31.infrastructure.controllers.dto.output.PersonOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/EJ31/getperson")
+@RequestMapping("/EJ31/getPerson")
 public class GetPersonController {
 
     @Autowired
-    GetPersonsService getPersonsService;
+    GetPersonService getPersonService;
 
-    //getAll
     @GetMapping("/all")
-    public Object getPersonas(@RequestParam(defaultValue = "simple") String outputType){
-        if(outputType.equals("simple")){
-            return getPersonsService.getAll();
-        } else if(outputType.equals("full")){
-            return getPersonsService.getFullAll();
-        } else throw new UnprocessableException("outputType debe ser 'simple' o 'full'");
+    public List<PersonOutputDTO> getPersons(){
+        return getPersonService.getAllPerson();
     }
 
-    //getByID
-    @GetMapping("/byid/{id}")
-    public Object getById(@PathVariable int id, @RequestParam(defaultValue = "simple") String outputType){
-        if(outputType.equals("simple")){
-            return getPersonsService.getById(id);
-        } else if(outputType.equals("full")){
-            return getPersonsService.getFullById(id);
-        } else throw new UnprocessableException("outputType debe ser 'simple' o 'full'");
+    @GetMapping("/byId/{id}")
+    public PersonOutputDTO getById(@PathVariable int id){
+        return getPersonService.getPersonById(id);
     }
 
-    //getByUser
-    @GetMapping("/byuser/{user}")
-    public Object getByUser(@PathVariable String user, @RequestParam(defaultValue = "simple") String outputType){
-        if(outputType.equals("simple")){
-            return getPersonsService.getByUser(user);
-        } else if(outputType.equals("full")){
-            return getPersonsService.getFullByUser(user);
-        } else throw new UnprocessableException("outputType debe ser 'simple' o 'full'");
+    @GetMapping("/byUser/{user}")
+    public PersonOutputDTO getByUser (@PathVariable String user){
+        return getPersonService.getPersonByUser(user);
     }
-
-
-
-
 }

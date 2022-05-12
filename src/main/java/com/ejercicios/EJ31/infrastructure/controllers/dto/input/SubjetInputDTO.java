@@ -4,15 +4,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
-public class ProfesorInputDTO {
+public class SubjetInputDTO {
 
-    private Integer idPerson;
-
+    private String name;
     private String coments;
 
-    @NotNull(message = "branch cannot be null")
-    private String branch;
+    @NotNull
+    private LocalDate initialDate;
+
+    private LocalDate finishDate;
 }

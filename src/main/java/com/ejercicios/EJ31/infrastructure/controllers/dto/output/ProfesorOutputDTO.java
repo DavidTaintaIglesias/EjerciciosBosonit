@@ -1,9 +1,11 @@
 package com.ejercicios.EJ31.infrastructure.controllers.dto.output;
 
-import com.ejercicios.EJ31.domain.entities.ProfesorEntity;
+import com.ejercicios.EJ31.domain.entities.Profesor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class ProfesorOutputDTO {
 
     private Integer id;
@@ -11,10 +13,10 @@ public class ProfesorOutputDTO {
     private String coments;
     private String branch;
 
-    public ProfesorOutputDTO (ProfesorEntity profesorEntity){
-        setId(profesorEntity.getId());
-        setIdPerson(profesorEntity.getPersonEntity().getId());
-        setComents(profesorEntity.getComents());
-        setBranch(profesorEntity.getBranch());
+    public ProfesorOutputDTO(Profesor profesor){
+        setId(profesor.getId());
+        setIdPerson(profesor.getPerson().getId());
+        setComents(profesor.getComents());
+        setBranch(profesor.getBranch());
     }
 }

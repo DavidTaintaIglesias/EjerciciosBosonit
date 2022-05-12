@@ -1,43 +1,36 @@
 package com.ejercicios.EJ31.infrastructure.controllers.dto.output;
 
-import com.ejercicios.EJ31.domain.entities.PersonEntity;
+import com.ejercicios.EJ31.domain.entities.Person;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class PersonOutputDTO {
 
-    private int id;
+    private Integer id;
     private String user;
-    private String password;
     private String name;
     private String surname;
     private String companyEmail;
     private String personalEmail;
     private String city;
-    private Boolean active;
-    private Date date;
+    private boolean active;
+    private LocalDate createdDate;
     private String imageUrl;
-    private Date terminationDate;
-    private Integer idProfesor;
-    private Integer idStudent;
+    private LocalDate terminationDate;
 
-    public PersonOutputDTO(PersonEntity personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
-        id=(personaEntity.getId());
-        user=(personaEntity.getUser());
-        password=(personaEntity.getPassword());
-        name=(personaEntity.getName());
-        surname=(personaEntity.getSurname());
-        companyEmail =(personaEntity.getCompanyEmail());
-        personalEmail =(personaEntity.getPersonalEmail());
-        city=(personaEntity.getCity());
-        active=(personaEntity.getActive());
-        date=(personaEntity.getDate());
-        imageUrl =(personaEntity.getImageUrl());
-        terminationDate =(personaEntity.getTerminationDate());
-        idProfesor=(personaEntity.getIdProfesor());
-        idStudent=personaEntity.getIdStudent();
-
+    public PersonOutputDTO (Person person){
+        setId(person.getId());
+        setUser(person.getUser());
+        setName(person.getName());
+        setSurname(person.getSurname());
+        setCompanyEmail(person.getCompanyEmail());
+        setPersonalEmail(person.getPersonalEmail());
+        setCity(person.getCity());
+        setActive(person.isActive());
+        setCreatedDate(person.getCreatedDate());
+        setImageUrl(person.getImageUrl());
+        setTerminationDate(person.getTerminationDate());
     }
 }

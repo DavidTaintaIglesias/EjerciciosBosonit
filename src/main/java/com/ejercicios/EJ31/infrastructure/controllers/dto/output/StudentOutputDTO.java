@@ -1,29 +1,28 @@
 package com.ejercicios.EJ31.infrastructure.controllers.dto.output;
 
-import com.ejercicios.EJ31.domain.entities.StudentEntity;
+import com.ejercicios.EJ31.domain.entities.Student;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class StudentOutputDTO {
 
     private Integer id;
     private Integer idPerson;
     private int numHours;
     private String coments;
+    private Integer idProfesor;
     private String branch;
-    private List<Integer> subjets = new ArrayList<>();
 
-    public StudentOutputDTO (StudentEntity studentEntity){
-        setId(studentEntity.getId());
-        setIdPerson(studentEntity.getPersonEntity().getId());
-        setNumHours(studentEntity.getNumHours());
-        setComents(studentEntity.getComents());
-        setBranch(studentEntity.getBranch());
-        for(int i =0; i<studentEntity.getSubjetList().size(); i++){
-            subjets.add(studentEntity.getSubjetList().get(i).getId());
-        }
+    public StudentOutputDTO(Student student){
+        setId(student.getId());
+        setIdPerson(student.getPerson().getId());
+        setNumHours(student.getNumHours());
+        setComents(student.getComents());
+        setIdProfesor(student.getProfesor().getId());
+        setBranch(student.getBranch());
     }
 }

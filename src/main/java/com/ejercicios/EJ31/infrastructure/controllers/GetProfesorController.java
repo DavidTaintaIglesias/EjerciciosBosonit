@@ -1,16 +1,15 @@
 package com.ejercicios.EJ31.infrastructure.controllers;
 
-import com.ejercicios.EJ31.aplication.services.GetProfesorService;
+import com.ejercicios.EJ31.application.exceptions.UnprocessableException;
+import com.ejercicios.EJ31.application.services.GetProfesorService;
 import com.ejercicios.EJ31.infrastructure.controllers.dto.output.ProfesorOutputDTO;
-import com.ejercicios.shared.exceptions.UnprocessableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
-@RequestMapping("/EJ31/getprofesor")
+@RequestMapping("/EJ31/getProfesor")
 public class GetProfesorController {
 
     @Autowired
@@ -18,16 +17,16 @@ public class GetProfesorController {
 
     @GetMapping("/all")
     public List<ProfesorOutputDTO> getAll(){
-        return getProfesorService.getAllProfesor();
+        return getProfesorService.getAll();
     }
 
-    @GetMapping("/byid/{id}")
-    public Object getProfesorById(@PathVariable int id, @RequestParam(defaultValue = "simple") String outputType){
+    @GetMapping("/byId/{id}")
+    public Object getById(@PathVariable int id, @RequestParam(defaultValue = "simple") String outputType){
         if(outputType.equals("simple")){
-            return getProfesorService.getProfesorById(id);
+            return getProfesorService.getById(id);
         } else if(outputType.equals("full")){
-            System.out.println(getProfesorService.getFullProfesorById(id));
-            return getProfesorService.getFullProfesorById(id);
-        } else throw new UnprocessableException("outputType solo puede ser 'simple' o 'full'");
+            return getProfesorService.getFullById(id);
+        } else throw new UnprocessableException("outputType must be 'simple' or 'full'");
+
     }
 }
