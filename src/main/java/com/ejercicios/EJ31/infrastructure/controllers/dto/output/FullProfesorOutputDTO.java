@@ -8,15 +8,18 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class FullProfesorOutputDTO {
-    private Integer id;
-    private Person person;
-    private String coments;
-    private String branch;
 
-    public FullProfesorOutputDTO(Profesor profesor){
-        setId(profesor.getId());
-        setPerson(profesor.getPerson());
-        setComents(profesor.getComents());
-        setBranch(profesor.getBranch());
-    }
+  private Integer id;
+  private Person person;
+  private String coments;
+  private String branch;
+
+  public FullProfesorOutputDTO(Profesor profesor) {
+
+    setId(profesor.getId());
+    setPerson(profesor.getPerson());
+    setComents(profesor.getComents());
+    setBranch(profesor.getBranch());
+  }
+
 }

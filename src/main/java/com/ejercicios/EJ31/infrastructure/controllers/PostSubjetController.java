@@ -15,11 +15,13 @@ import javax.validation.Valid;
 @RequestMapping("/EJ31")
 public class PostSubjetController {
 
-    @Autowired
-    PostSubjetService postSubjetService;
+  @Autowired
+  PostSubjetService postSubjetService;
 
-    @PostMapping("/postSubjet")
-    public SubjetOutputDTO postSubjet(@Valid @RequestBody SubjetInputDTO subjetInputDTO){
-        return postSubjetService.postSubjet(subjetInputDTO);
-    }
+  @PostMapping("/postSubjet")
+  public SubjetOutputDTO postSubjet(@Valid @RequestBody SubjetInputDTO subjetInputDTO) {
+
+    return postSubjetService.postSubjet(subjetInputDTO);
+  }
+
 }

@@ -9,15 +9,16 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class StudentInputDTO {
 
-    private Integer idPerson;
+  private Integer idPerson;
 
-    @NotNull(message = "number of hours cannot be null")
-    private Integer numHours;
+  @NotNull(message = "number of hours cannot be null")
+  private Integer numHours;
 
-    private String coments;
+  private String coments;
 
-    private Integer idProfesor;
+  private Integer idProfesor;
 
-    @NotNull(message = "branch cannot be null")
-    private String branch;
+  @NotNull(message = "branch cannot be null")
+  private String branch;
+
 }

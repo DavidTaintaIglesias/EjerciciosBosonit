@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/BS2") //Poniendo esto todo lo que haga en la pagina ocurre en esta ruta, luego puedo añadir subrutas
 public class Controlador1 {
 
-    @Autowired
-    PersonaService1 personaService;
+  @Autowired
+  PersonaService1 personaService;
 
-    @PostMapping ("/postpersona")
-    public Persona postPersona(@RequestBody Persona p){
-        personaService.postPersona(p);
-        return p;
-    }
+  @PostMapping("/postpersona")
+  public Persona postPersona(@RequestBody Persona p) {
+
+    personaService.postPersona(p);
+    return p;
+  }
+
 }

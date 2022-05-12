@@ -11,19 +11,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class PostProfesorService {
 
-    @Autowired
-    ProfesorRepository profesorRepository;
+  @Autowired
+  ProfesorRepository profesorRepository;
 
-    @Autowired
-    ProfesorPersonChecks checkPerson;
+  @Autowired
+  ProfesorPersonChecks checkPerson;
 
-    public ProfesorOutputDTO postProfesor (ProfesorInputDTO profesorInputDTO){
-        checkPerson.personCheck(profesorInputDTO.getIdPerson());
-        checkPerson.validProfesor(profesorInputDTO.getIdPerson());
-        Profesor profesor = new Profesor(profesorInputDTO);
-        profesorRepository.save(profesor);
-        checkPerson.addPersonToProfesor(profesorInputDTO.getIdPerson(),profesor.getId());
-        ProfesorOutputDTO profesorOutputDTO = new ProfesorOutputDTO(profesor);
-        return profesorOutputDTO;
-    }
+  public ProfesorOutputDTO postProfesor(ProfesorInputDTO profesorInputDTO) {
+
+    checkPerson.personCheck(profesorInputDTO.getIdPerson());
+    checkPerson.validProfesor(profesorInputDTO.getIdPerson());
+    Profesor profesor = new Profesor(profesorInputDTO);
+    profesorRepository.save(profesor);
+    checkPerson.addPersonToProfesor(profesorInputDTO.getIdPerson(), profesor.getId());
+    ProfesorOutputDTO profesorOutputDTO = new ProfesorOutputDTO(profesor);
+    return profesorOutputDTO;
+  }
+
 }

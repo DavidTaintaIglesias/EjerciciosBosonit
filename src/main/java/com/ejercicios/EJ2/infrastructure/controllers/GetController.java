@@ -14,24 +14,28 @@ import java.util.ArrayList;
 @RequestMapping("/EJ2")
 public class GetController {
 
-    @Autowired
-    PersonaService personaService;
+  @Autowired
+  PersonaService personaService;
 
-    //Ver todos los valores
-    @GetMapping("/getall")
-    public ArrayList<PersonaOutputDTO> getPersonas(){
-        return personaService.getAll();
-    }
+  //Ver todos los valores
+  @GetMapping("/getall")
+  public ArrayList<PersonaOutputDTO> getPersonas() {
 
-    //Buscar por id
-    @GetMapping("/getbyid/{id}")
-    public PersonaOutputDTO getPersonById(@PathVariable int id) throws Exception{
-        return personaService.getById(id);
-    }
+    return personaService.getAll();
+  }
 
-    //Buscar por User
-    @GetMapping("/getbyuser/{user}")
-    public ArrayList<PersonaOutputDTO> getPersonByUser(@PathVariable String user){
-        return personaService.getByUser(user);
-    }
+  //Buscar por id
+  @GetMapping("/getbyid/{id}")
+  public PersonaOutputDTO getPersonById(@PathVariable int id) throws Exception {
+
+    return personaService.getById(id);
+  }
+
+  //Buscar por User
+  @GetMapping("/getbyuser/{user}")
+  public ArrayList<PersonaOutputDTO> getPersonByUser(@PathVariable String user) {
+
+    return personaService.getByUser(user);
+  }
+
 }

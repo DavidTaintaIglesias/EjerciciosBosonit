@@ -11,25 +11,28 @@ import org.springframework.stereotype.Service;
 @Service
 public class SubjetsStudentService {
 
-    @Autowired
-    StudentRepository studentRepository;
+  @Autowired
+  StudentRepository studentRepository;
 
-    @Autowired
-    SubjetsRepository subjetsRepository;
+  @Autowired
+  SubjetsRepository subjetsRepository;
 
-    public String addSubjet(int idStudent, int idSubjet){
-        Student student = studentRepository.findById(idStudent).orElseThrow(()->new NotFoundException("Student Id not found"));
-        Subjet subjet = subjetsRepository.findById(idSubjet).orElseThrow(()-> new NotFoundException("Subjet Id not found"));
-        student.addSubjet(subjet);
-        studentRepository.save(student);
-        return "Subjet "+idSubjet+" add to Student "+idStudent;
-    }
+  public String addSubjet(int idStudent, int idSubjet) {
 
-    public String removeSubjet(int idStudent, int idSubjet){
-        Student student = studentRepository.findById(idStudent).orElseThrow(()->new NotFoundException("Student Id not found"));
-        Subjet subjet = subjetsRepository.findById(idSubjet).orElseThrow(()-> new NotFoundException("Subjet Id not found"));
-        student.removeSubjet(subjet);
-        studentRepository.save(student);
-        return "Subjet "+idSubjet+" delete from Student "+idStudent;
-    }
+    Student student = studentRepository.findById(idStudent).orElseThrow(() -> new NotFoundException("Student Id not found"));
+    Subjet subjet = subjetsRepository.findById(idSubjet).orElseThrow(() -> new NotFoundException("Subjet Id not found"));
+    student.addSubjet(subjet);
+    studentRepository.save(student);
+    return "Subjet " + idSubjet + " add to Student " + idStudent;
+  }
+
+  public String removeSubjet(int idStudent, int idSubjet) {
+
+    Student student = studentRepository.findById(idStudent).orElseThrow(() -> new NotFoundException("Student Id not found"));
+    Subjet subjet = subjetsRepository.findById(idSubjet).orElseThrow(() -> new NotFoundException("Subjet Id not found"));
+    student.removeSubjet(subjet);
+    studentRepository.save(student);
+    return "Subjet " + idSubjet + " delete from Student " + idStudent;
+  }
+
 }

@@ -14,21 +14,25 @@ import java.util.List;
 @RequestMapping("/EJ31/getPerson")
 public class GetPersonController {
 
-    @Autowired
-    GetPersonService getPersonService;
+  @Autowired
+  GetPersonService getPersonService;
 
-    @GetMapping("/all")
-    public List<PersonOutputDTO> getPersons(){
-        return getPersonService.getAllPerson();
-    }
+  @GetMapping("/all")
+  public List<PersonOutputDTO> getPersons() {
 
-    @GetMapping("/byId/{id}")
-    public PersonOutputDTO getById(@PathVariable int id){
-        return getPersonService.getPersonById(id);
-    }
+    return getPersonService.getAllPerson();
+  }
 
-    @GetMapping("/byUser/{user}")
-    public PersonOutputDTO getByUser (@PathVariable String user){
-        return getPersonService.getPersonByUser(user);
-    }
+  @GetMapping("/byId/{id}")
+  public PersonOutputDTO getById(@PathVariable int id) {
+
+    return getPersonService.getPersonById(id);
+  }
+
+  @GetMapping("/byUser/{user}")
+  public PersonOutputDTO getByUser(@PathVariable String user) {
+
+    return getPersonService.getPersonByUser(user);
+  }
+
 }

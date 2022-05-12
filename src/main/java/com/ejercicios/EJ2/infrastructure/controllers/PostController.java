@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/EJ2")
 public class PostController {
 
-    @Autowired
-    PersonaService personaService;
+  @Autowired
+  PersonaService personaService;
 
-    //Añadir persona
-    @PostMapping("/postperson")// simbolo "|" -> alt+124
-    public PersonaOutputDTO setPersona(@RequestBody PersonaInputDTO persona) throws Exception{
-        return personaService.setPersona(persona);
-    }
+  //Añadir persona
+  @PostMapping("/postperson")// simbolo "|" -> alt+124
+  public PersonaOutputDTO setPersona(@RequestBody PersonaInputDTO persona) throws Exception {
+
+    return personaService.setPersona(persona);
+  }
+
 }

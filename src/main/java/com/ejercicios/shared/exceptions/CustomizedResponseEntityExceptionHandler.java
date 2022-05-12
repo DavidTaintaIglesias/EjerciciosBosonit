@@ -14,24 +14,28 @@ import java.util.Map;
 @RestControllerAdvice
 public class CustomizedResponseEntityExceptionHandler {
 
-    @ExceptionHandler(NotFound.class)
-    public final ResponseEntity<ErrorMessage> handleNotFoundException(NotFound ex){
-        ErrorMessage customError = new ErrorMessage(new Date(), ex.getMessage(), HttpStatus.NOT_FOUND.value());
-        return new ResponseEntity<ErrorMessage>(customError, HttpStatus.NOT_FOUND);
-    }
+  @ExceptionHandler(NotFound.class)
+  public final ResponseEntity<ErrorMessage> handleNotFoundException(NotFound ex) {
 
-    //Coge la fecha y hora, el mensaje obtenido del error y un valor http que queramos y lo introduce en mi Custom error
-    @ExceptionHandler(Unprocessable.class)
-    public final ResponseEntity<ErrorMessage> handleUnprocessableException(Unprocessable ex){
-        ErrorMessage customError = new ErrorMessage(new Date(), ex.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY.value());
-        return new ResponseEntity<ErrorMessage>(customError, HttpStatus.UNPROCESSABLE_ENTITY);
-    }
+    ErrorMessage customError = new ErrorMessage(new Date(), ex.getMessage(), HttpStatus.NOT_FOUND.value());
+    return new ResponseEntity<ErrorMessage>(customError, HttpStatus.NOT_FOUND);
+  }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> badRequestHandler(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(e -> errors.put(e.getField(), e.getDefaultMessage()));
+  //Coge la fecha y hora, el mensaje obtenido del error y un valor http que queramos y lo introduce en mi Custom error
+  @ExceptionHandler(Unprocessable.class)
+  public final ResponseEntity<ErrorMessage> handleUnprocessableException(Unprocessable ex) {
 
-        return errors;
-    }
+    ErrorMessage customError = new ErrorMessage(new Date(), ex.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY.value());
+    return new ResponseEntity<ErrorMessage>(customError, HttpStatus.UNPROCESSABLE_ENTITY);
+  }
+
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  public Map<String, String> badRequestHandler(MethodArgumentNotValidException ex) {
+
+    Map<String, String> errors = new HashMap<>();
+    ex.getBindingResult().getFieldErrors().forEach(e -> errors.put(e.getField(), e.getDefaultMessage()));
+
+    return errors;
+  }
+
 }

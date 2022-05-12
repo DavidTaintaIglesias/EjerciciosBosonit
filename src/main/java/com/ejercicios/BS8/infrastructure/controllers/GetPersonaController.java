@@ -14,28 +14,29 @@ import java.util.List;
 @RequestMapping("/BS8/get")
 public class GetPersonaController {
 
-    @Autowired
-    GetPersonaService getPersonsService;
+  @Autowired
+  GetPersonaService getPersonsService;
 
-    //getAll
-    @GetMapping("/all")
-    public List<PersonaOutputDTO> getPersonas(){
-        return getPersonsService.getAll();
-    }
+  //getAll
+  @GetMapping("/all")
+  public List<PersonaOutputDTO> getPersonas() {
 
-    //getByID
-    @GetMapping("/byid/{id}")
-    public PersonaOutputDTO getById(@PathVariable int id){
-        return getPersonsService.getById(id);
-    }
+    return getPersonsService.getAll();
+  }
 
-    //getByUser
-    @GetMapping("/byuser/{user}")
-    public PersonaOutputDTO getByUser(@PathVariable String user){
-        return getPersonsService.getByUser(user);
-    }
+  //getByID
+  @GetMapping("/byid/{id}")
+  public PersonaOutputDTO getById(@PathVariable int id) {
 
+    return getPersonsService.getById(id);
+  }
 
+  //getByUser
+  @GetMapping("/byuser/{user}")
+  public PersonaOutputDTO getByUser(@PathVariable String user) {
+
+    return getPersonsService.getByUser(user);
+  }
 
 
 }

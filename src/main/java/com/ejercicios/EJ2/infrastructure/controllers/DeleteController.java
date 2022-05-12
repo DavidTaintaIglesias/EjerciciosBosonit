@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/EJ2")
 public class DeleteController {
 
-    @Autowired
-    PersonaService personaService;
+  @Autowired
+  PersonaService personaService;
 
-    //Borrar por id
-    @DeleteMapping("/delete/{id}")//Problema del autoincrement
-    public String deleteById(@PathVariable int id) throws Exception {
-        return personaService.deleteById(id);
-    }
+  //Borrar por id
+  @DeleteMapping("/delete/{id}")//Problema del autoincrement
+  public String deleteById(@PathVariable int id) throws Exception {
+
+    return personaService.deleteById(id);
+  }
+
 }

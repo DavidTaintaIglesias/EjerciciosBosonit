@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/EJ2")
 public class PutController {
 
-    @Autowired
-    PersonaService personaService;
+  @Autowired
+  PersonaService personaService;
 
-    //Modificar por id (problemas con el autoincrement)
-    @PutMapping("/put/{id}")
-    public PersonaOutputDTO putById(@PathVariable int id, @RequestBody PersonaInputDTO personaInputDTO) throws EmptyResultDataAccessException {
-        return personaService.putById(id, personaInputDTO);
-    }
+  //Modificar por id (problemas con el autoincrement)
+  @PutMapping("/put/{id}")
+  public PersonaOutputDTO putById(@PathVariable int id, @RequestBody PersonaInputDTO personaInputDTO) throws EmptyResultDataAccessException {
+
+    return personaService.putById(id, personaInputDTO);
+  }
+
 }

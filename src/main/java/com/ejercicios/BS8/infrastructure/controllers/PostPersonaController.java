@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/BS8/post")
 public class PostPersonaController {
 
-    @Autowired
-    PostPersonaService postPersonService;
+  @Autowired
+  PostPersonaService postPersonService;
 
-    @PostMapping
-    public PersonaOutputDTO postPersona(@RequestBody PersonaInputDTO personaInputDTO){
-        return postPersonService.addPersona(personaInputDTO);
-    }
+  @PostMapping
+  public PersonaOutputDTO postPersona(@RequestBody PersonaInputDTO personaInputDTO) {
+
+    return postPersonService.addPersona(personaInputDTO);
+  }
+
 }

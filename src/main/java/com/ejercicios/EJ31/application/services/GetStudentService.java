@@ -13,21 +13,25 @@ import java.util.List;
 @Service
 public class GetStudentService {
 
-    @Autowired
-    StudentRepository studentRepository;
+  @Autowired
+  StudentRepository studentRepository;
 
-    public List<StudentOutputDTO> getAll(){
-        List<Student> students = studentRepository.findAll();
-        return students.stream().map(StudentOutputDTO::new).toList();
-    }
+  public List<StudentOutputDTO> getAll() {
 
-    public StudentOutputDTO getById(int id){
-        StudentOutputDTO studentOutputDTO = new StudentOutputDTO(studentRepository.findById(id).orElseThrow(()->new NotFoundException("Student Id not foud")));
-        return studentOutputDTO;
-    }
+    List<Student> students = studentRepository.findAll();
+    return students.stream().map(StudentOutputDTO::new).toList();
+  }
 
-    public FullStudentOutputDTO getFullById(int id){
-        FullStudentOutputDTO fullStudentOutputDTO = new FullStudentOutputDTO(studentRepository.findById(id).orElseThrow(()->new NotFoundException("Student Id not foud")));
-        return fullStudentOutputDTO;
-    }
+  public StudentOutputDTO getById(int id) {
+
+    StudentOutputDTO studentOutputDTO = new StudentOutputDTO(studentRepository.findById(id).orElseThrow(() -> new NotFoundException("Student Id not foud")));
+    return studentOutputDTO;
+  }
+
+  public FullStudentOutputDTO getFullById(int id) {
+
+    FullStudentOutputDTO fullStudentOutputDTO = new FullStudentOutputDTO(studentRepository.findById(id).orElseThrow(() -> new NotFoundException("Student Id not foud")));
+    return fullStudentOutputDTO;
+  }
+
 }

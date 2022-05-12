@@ -9,13 +9,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FullClientOutputDTO {
 
-    private Integer id;
-    private UserEntity userEntity;
-    private int orders;
+  private Integer id;
+  private UserEntity userEntity;
+  private int orders;
 
-    public FullClientOutputDTO (ClientEntity clientEntity){
-        setId(clientEntity.getId());
-        setUserEntity(clientEntity.getUser());
-        setOrders(clientEntity.getOrders());
-    }
+  public FullClientOutputDTO(ClientEntity clientEntity) {
+
+    setId(clientEntity.getId());
+    setUserEntity(clientEntity.getUser());
+    setOrders(clientEntity.getOrders());
+  }
+
 }

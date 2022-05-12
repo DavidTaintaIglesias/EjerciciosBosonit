@@ -15,39 +15,42 @@ import java.util.ArrayList;
 public class PersonaService implements Serializable {
 
 
-    @Autowired
-    PersonaRepository personaRepository;
+  @Autowired
+  PersonaRepository personaRepository;
 
 
-    //Recibir todos las persona de mi BBDD
-    public ArrayList<PersonaOutputDTO> getAll() {
-        ArrayList<PersonaOutputDTO> lista= new ArrayList<PersonaOutputDTO>();
-        for (int i =1; i<=personaRepository.count();i++){
-            PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.getById(i));
-            lista.add(personaOutputDTO);
-        }
-        return lista;
+  //Recibir todos las persona de mi BBDD
+  public ArrayList<PersonaOutputDTO> getAll() {
 
+    ArrayList<PersonaOutputDTO> lista = new ArrayList<PersonaOutputDTO>();
+    for (int i = 1; i <= personaRepository.count(); i++) {
+      PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.getById(i));
+      lista.add(personaOutputDTO);
     }
+    return lista;
 
-    //Buscar por ID
-    public PersonaOutputDTO getById(int id) throws Exception{
-        PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.findById(id).orElseThrow(()-> new Exception("No existe ese ID")));
-        return personaOutputDTO;
+  }
+
+  //Buscar por ID
+  public PersonaOutputDTO getById(int id) throws Exception {
+
+    PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.findById(id).orElseThrow(() -> new Exception("No existe ese ID")));
+    return personaOutputDTO;
+  }
+
+
+  //Buscar by User (En el caso de que User pueda repetirse, sino quitaria ArrayList
+  public ArrayList<PersonaOutputDTO> getByUser(String user) {
+
+    ArrayList<Persona> listaPersonasEntities = personaRepository.findByUser(user);
+    ArrayList<PersonaOutputDTO> listaPersonasDTO = new ArrayList<PersonaOutputDTO>();
+    for (int i = 0; i < listaPersonasEntities.size(); i++) {
+      Persona persona = listaPersonasEntities.get(i);
+      PersonaOutputDTO personaDTO = new PersonaOutputDTO(persona);
+      listaPersonasDTO.add(personaDTO);
     }
-
-
-    //Buscar by User (En el caso de que User pueda repetirse, sino quitaria ArrayList
-    public ArrayList<PersonaOutputDTO> getByUser(String user){
-        ArrayList<Persona> listaPersonasEntities = personaRepository.findByUser(user);
-        ArrayList<PersonaOutputDTO> listaPersonasDTO = new ArrayList<PersonaOutputDTO>();
-        for(int i=0;i<listaPersonasEntities.size();i++){
-            Persona persona = listaPersonasEntities.get(i);
-            PersonaOutputDTO personaDTO = new PersonaOutputDTO(persona);
-            listaPersonasDTO.add(personaDTO);
-        }
-        return listaPersonasDTO;
-    }
+    return listaPersonasDTO;
+  }
 
     /*//Buscar by User sin usar findByUser
     public ArrayList<PersonaOutputDTO> getByUser(String user){
@@ -61,46 +64,50 @@ public class PersonaService implements Serializable {
         return listaPersonasDTO;
     }*/
 
-    //Borrar por id
-    public String deleteById(int id) throws EmptyResultDataAccessException {
-        try{
-            personaRepository.deleteById(id);
-            return "Borrado el registro con el Id: "+id;
-        } catch (EmptyResultDataAccessException e){
-            return "Id no encontrado";
-        }
-    }
+  //Borrar por id
+  public String deleteById(int id) throws EmptyResultDataAccessException {
 
-    //Modificar por id
-    public PersonaOutputDTO putById(int id, PersonaInputDTO personaInputDTO) throws EmptyResultDataAccessException{
-        try{
-            personaRepository.deleteById(id);
-            Persona personaEntity = new Persona(personaInputDTO);
-            personaRepository.save(personaEntity);
-            PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);
-            return personaOutputDTO;
-        } catch (EmptyResultDataAccessException e){
-            Persona personaEntity = new Persona(personaInputDTO);
-            personaRepository.save(personaEntity);
-            PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);
-            return personaOutputDTO;
-        }
+    try {
+      personaRepository.deleteById(id);
+      return "Borrado el registro con el Id: " + id;
+    } catch (EmptyResultDataAccessException e) {
+      return "Id no encontrado";
     }
+  }
 
-    //Añadir personas
-    public PersonaOutputDTO setPersona(PersonaInputDTO personaDTO) throws Exception{
-        if(personaDTO.getUser()!=null){
-            if(personaDTO.getUser().length()<6 || personaDTO.getUser().length()>10){
-                throw new Exception("User debe estar entre 6 y 10 caracteres");
-            } else {
-                Persona personaEntity = new Persona(personaDTO);//Convierto InputDTO en Entity con el constructor de Entity
-                personaRepository.save(personaEntity);//Almaceno Entity en mi repositorio
-                PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);//Convierto Entity en OutputDTO con el constructor de DTO
-                System.out.println("Persona añadida");
-                return personaOutputDTO;
-            }
-        } else {
-            throw new Exception("User no puede estar vacio");
-        }
+  //Modificar por id
+  public PersonaOutputDTO putById(int id, PersonaInputDTO personaInputDTO) throws EmptyResultDataAccessException {
+
+    try {
+      personaRepository.deleteById(id);
+      Persona personaEntity = new Persona(personaInputDTO);
+      personaRepository.save(personaEntity);
+      PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);
+      return personaOutputDTO;
+    } catch (EmptyResultDataAccessException e) {
+      Persona personaEntity = new Persona(personaInputDTO);
+      personaRepository.save(personaEntity);
+      PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);
+      return personaOutputDTO;
     }
+  }
+
+  //Añadir personas
+  public PersonaOutputDTO setPersona(PersonaInputDTO personaDTO) throws Exception {
+
+    if (personaDTO.getUser() != null) {
+      if (personaDTO.getUser().length() < 6 || personaDTO.getUser().length() > 10) {
+        throw new Exception("User debe estar entre 6 y 10 caracteres");
+      } else {
+        Persona personaEntity = new Persona(personaDTO);//Convierto InputDTO en Entity con el constructor de Entity
+        personaRepository.save(personaEntity);//Almaceno Entity en mi repositorio
+        PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);//Convierto Entity en OutputDTO con el constructor de DTO
+        System.out.println("Persona añadida");
+        return personaOutputDTO;
+      }
+    } else {
+      throw new Exception("User no puede estar vacio");
+    }
+  }
+
 }

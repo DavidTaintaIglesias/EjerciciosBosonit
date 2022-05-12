@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UpdatePersonaController {
 
-    @Autowired
-    UpdatePersonaService updatePersonService;
+  @Autowired
+  UpdatePersonaService updatePersonService;
+
 }

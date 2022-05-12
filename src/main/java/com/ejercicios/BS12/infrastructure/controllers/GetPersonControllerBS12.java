@@ -13,22 +13,26 @@ import java.util.List;
 @RestController
 public class GetPersonControllerBS12 {
 
-    @Autowired
-    GetPersonServiceBS12 getPersonService;
+  @Autowired
+  GetPersonServiceBS12 getPersonService;
 
-    @GetMapping("/getall")
-    @CrossOrigin("*")
-    public List<PersonOutputDTOBS12> getPersons(){
-        return getPersonService.getAllPerson();
-    }
+  @GetMapping("/getall")
+  @CrossOrigin("*")
+  public List<PersonOutputDTOBS12> getPersons() {
 
-    @GetMapping("/byId/{id}")
-    public PersonOutputDTOBS12 getById(@PathVariable int id){
-        return getPersonService.getPersonById(id);
-    }
+    return getPersonService.getAllPerson();
+  }
 
-    @GetMapping("/byUser/{user}")
-    public PersonOutputDTOBS12 getByUser (@PathVariable String user){
-        return getPersonService.getPersonByUser(user);
-    }
+  @GetMapping("/byId/{id}")
+  public PersonOutputDTOBS12 getById(@PathVariable int id) {
+
+    return getPersonService.getPersonById(id);
+  }
+
+  @GetMapping("/byUser/{user}")
+  public PersonOutputDTOBS12 getByUser(@PathVariable String user) {
+
+    return getPersonService.getPersonByUser(user);
+  }
+
 }

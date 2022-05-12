@@ -8,17 +8,17 @@ import java.util.Date;
 public class PersonaInputDTO {
 
 
-    private String user;
-    private String password;
-    private String name;
-    private String surname;
-    private String companyEmail;
-    private String personalEmail;
-    private String city;
-    private Boolean active;
-    private Date date;
-    private String imageUrl;
-    private Date termination_date;
+  private String user;
+  private String password;
+  private String name;
+  private String surname;
+  private String companyEmail;
+  private String personalEmail;
+  private String city;
+  private Boolean active;
+  private Date date;
+  private String imageUrl;
+  private Date termination_date;
 
 
 }
