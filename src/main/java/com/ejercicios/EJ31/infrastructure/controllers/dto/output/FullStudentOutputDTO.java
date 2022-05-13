@@ -13,21 +13,23 @@ import java.util.List;
 @NoArgsConstructor
 public class FullStudentOutputDTO {
 
-    private Integer id;
-    private Person person;
-    private int numHours;
-    private String coments;
-    private Profesor profesor;
-    private String branch;
-    private List<Subjet> subjets;
+  private Integer id;
+  private Person person;
+  private int numHours;
+  private String coments;
+  private Profesor profesor;
+  private String branch;
+  private List<Subjet> subjets;
 
-    public FullStudentOutputDTO(Student student){
-        setId(student.getId());
-        setPerson(student.getPerson());
-        setNumHours(student.getNumHours());
-        setComents(student.getComents());
-        setProfesor(student.getProfesor());
-        setBranch(student.getBranch());
-        setSubjets(student.getSubjets());
-    }
+  public FullStudentOutputDTO(Student student) {
+
+    setId(student.getId());
+    setPerson(student.getPerson());
+    setNumHours(student.getNumHours());
+    setComents(student.getComents());
+    setProfesor(student.getProfesor());
+    setBranch(student.getBranch());
+    setSubjets(student.getSubjets());
+  }
+
 }

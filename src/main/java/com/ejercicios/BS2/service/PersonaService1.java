@@ -8,15 +8,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonaService1 {
 
-    Persona personaFinal;
+  Persona personaFinal;
 
-    public Persona postPersona(Persona p){
-        personaFinal = p;
-        personaFinal.setEdad(p.getEdad()+10);
-        return personaFinal;
-    }
+  public Persona postPersona(Persona p) {
 
-    public Persona getPersona(){
-        return personaFinal;
-    }
+    personaFinal = p;
+    personaFinal.setEdad(p.getEdad() + 10);
+    return personaFinal;
+  }
+
+  public Persona getPersona() {
+
+    return personaFinal;
+  }
+
 }

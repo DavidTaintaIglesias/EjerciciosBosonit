@@ -12,21 +12,24 @@ import java.util.List;
 @RequestMapping("/BS9/getclient")
 public class GetClientController {
 
-    @Autowired
-    GetClientService getClientService;
+  @Autowired
+  GetClientService getClientService;
 
-    @GetMapping("/all")
-    public List<ClientOutputDTO> getAll(){
-        return getClientService.getAll();
-    }
+  @GetMapping("/all")
+  public List<ClientOutputDTO> getAll() {
 
-    @GetMapping("/byid/{id}")
-    public Object getById(@PathVariable int id, @RequestParam(defaultValue = "simple") String outputType){
-        System.out.println("Client devuelve el cliente "+id+" pedido por User ");
-        if(outputType.equals("simple")){
-            return getClientService.getById(id);
-        } else if(outputType.equals("full")){
-            return getClientService.getFullById(id);
-        } else return new Unprocessable("outputType debe ser 'simple' o 'full");
-    }
+    return getClientService.getAll();
+  }
+
+  @GetMapping("/byid/{id}")
+  public Object getById(@PathVariable int id, @RequestParam(defaultValue = "simple") String outputType) {
+
+    System.out.println("Client devuelve el cliente " + id + " pedido por User ");
+    if (outputType.equals("simple")) {
+      return getClientService.getById(id);
+    } else if (outputType.equals("full")) {
+      return getClientService.getFullById(id);
+    } else return new Unprocessable("outputType debe ser 'simple' o 'full");
+  }
+
 }

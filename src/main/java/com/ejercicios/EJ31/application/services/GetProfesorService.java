@@ -13,21 +13,25 @@ import java.util.List;
 @Service
 public class GetProfesorService {
 
-    @Autowired
-    ProfesorRepository profesorRepository;
+  @Autowired
+  ProfesorRepository profesorRepository;
 
-    public List<ProfesorOutputDTO> getAll(){
-        List<Profesor> profesors = profesorRepository.findAll();
-        return profesors.stream().map(ProfesorOutputDTO::new).toList();
-    }
+  public List<ProfesorOutputDTO> getAll() {
 
-    public ProfesorOutputDTO getById(int id){
-        ProfesorOutputDTO profesorOutputDTO = new ProfesorOutputDTO(profesorRepository.findById(id).orElseThrow(()->new NotFoundException("Profesor Id not foud")));
-        return profesorOutputDTO;
-    }
+    List<Profesor> profesors = profesorRepository.findAll();
+    return profesors.stream().map(ProfesorOutputDTO::new).toList();
+  }
 
-    public FullProfesorOutputDTO getFullById(int id){
-        FullProfesorOutputDTO fullProfesorOutputDTO = new FullProfesorOutputDTO(profesorRepository.findById(id).orElseThrow(()->new NotFoundException("Profesor Id not found")));
-        return fullProfesorOutputDTO;
-    }
+  public ProfesorOutputDTO getById(int id) {
+
+    ProfesorOutputDTO profesorOutputDTO = new ProfesorOutputDTO(profesorRepository.findById(id).orElseThrow(() -> new NotFoundException("Profesor Id not foud")));
+    return profesorOutputDTO;
+  }
+
+  public FullProfesorOutputDTO getFullById(int id) {
+
+    FullProfesorOutputDTO fullProfesorOutputDTO = new FullProfesorOutputDTO(profesorRepository.findById(id).orElseThrow(() -> new NotFoundException("Profesor Id not found")));
+    return fullProfesorOutputDTO;
+  }
+
 }

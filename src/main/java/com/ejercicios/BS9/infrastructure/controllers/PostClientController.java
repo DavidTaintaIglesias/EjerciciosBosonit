@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/BS9/postclient")
 public class PostClientController {
 
-    @Autowired
-    PostClientService postClientService;
+  @Autowired
+  PostClientService postClientService;
 
-    @PostMapping
-    public ClientOutputDTO postClient(@RequestBody ClientInputDTO clientInputDTO){
-        return postClientService.postClient(clientInputDTO);
-    }
+  @PostMapping
+  public ClientOutputDTO postClient(@RequestBody ClientInputDTO clientInputDTO) {
+
+    return postClientService.postClient(clientInputDTO);
+  }
+
 }

@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/BS2")
 public class Controlador2 {
 
-    @Autowired
-    PersonaService1 personaService;
+  @Autowired
+  PersonaService1 personaService;
 
-    @GetMapping("/getpersona")
-    public Persona getPersona(){
-        return personaService.getPersona();
-    }
+  @GetMapping("/getpersona")
+  public Persona getPersona() {
+
+    return personaService.getPersona();
+  }
+
 }

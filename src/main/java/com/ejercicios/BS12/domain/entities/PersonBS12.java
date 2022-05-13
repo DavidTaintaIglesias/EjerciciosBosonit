@@ -14,55 +14,57 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class PersonBS12 implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_person")
-    Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_person")
+  Integer id;
 
-    @Column(name = "user")
-    String usuario;
+  @Column(name = "user")
+  String usuario;
 
-    @Column(name = "password")
-    String password;
+  @Column(name = "password")
+  String password;
 
-    @Column(name = "name")
-    String name;
+  @Column(name = "name")
+  String name;
 
-    @Column(name = "surname")
-    String surname;
+  @Column(name = "surname")
+  String surname;
 
-    @Column(name = "company_email")
-    String company_email;
+  @Column(name = "company_email")
+  String company_email;
 
-    @Column(name = "personal_email")
-    String personal_email;
+  @Column(name = "personal_email")
+  String personal_email;
 
-    @Column(name = "city")
-    String city;
+  @Column(name = "city")
+  String city;
 
-    @Column(name = "active")
-    boolean active;
+  @Column(name = "active")
+  boolean active;
 
-    @Column(name = "created_date")
-    LocalDate created_date;
+  @Column(name = "created_date")
+  LocalDate created_date;
 
-    @Column(name = "imagen_url")
-    String image_url;
+  @Column(name = "imagen_url")
+  String image_url;
 
-    @Column(name = "termination_date")
-    LocalDate termination_date;
+  @Column(name = "termination_date")
+  LocalDate termination_date;
 
-    public PersonBS12(PersonInputDTOBS12 personInputDTO){
-        setUsuario(personInputDTO.getUsuario());
-        setPassword(personInputDTO.getPassword());
-        setName(personInputDTO.getName());
-        setSurname(personInputDTO.getSurname());
-        setCompany_email(personInputDTO.getCompany_email());
-        setPersonal_email(personInputDTO.getPersonal_email());
-        setCity(personInputDTO.getCity());
-        setActive(personInputDTO.isActive());
-        setCreated_date(personInputDTO.getCreated_date());
-        setImage_url(personInputDTO.getImage_url());
-        setTermination_date(personInputDTO.getTermination_date());
-    }
+  public PersonBS12(PersonInputDTOBS12 personInputDTO) {
+
+    setUsuario(personInputDTO.getUsuario());
+    setPassword(personInputDTO.getPassword());
+    setName(personInputDTO.getName());
+    setSurname(personInputDTO.getSurname());
+    setCompany_email(personInputDTO.getCompany_email());
+    setPersonal_email(personInputDTO.getPersonal_email());
+    setCity(personInputDTO.getCity());
+    setActive(personInputDTO.isActive());
+    setCreated_date(personInputDTO.getCreated_date());
+    setImage_url(personInputDTO.getImage_url());
+    setTermination_date(personInputDTO.getTermination_date());
+  }
+
 }

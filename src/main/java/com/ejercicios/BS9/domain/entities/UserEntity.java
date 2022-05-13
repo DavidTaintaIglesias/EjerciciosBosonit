@@ -13,26 +13,28 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class UserEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
-    Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_user")
+  Integer id;
 
-    @Column(name = "user_name")
-    String name;
+  @Column(name = "user_name")
+  String name;
 
-    @Column(name = "user_surname")
-    String surname;
+  @Column(name = "user_surname")
+  String surname;
 
-    @Column(name = "edad")
-    int age;
+  @Column(name = "edad")
+  int age;
 
-    @Column(name = "id_client")
-    Integer idClient;
+  @Column(name = "id_client")
+  Integer idClient;
 
-    public UserEntity(UserInputDTO userInputDTO){
-        setName(userInputDTO.getName());
-        setSurname(userInputDTO.getSurname());
-        setAge(userInputDTO.getAge());
-    }
+  public UserEntity(UserInputDTO userInputDTO) {
+
+    setName(userInputDTO.getName());
+    setSurname(userInputDTO.getSurname());
+    setAge(userInputDTO.getAge());
+  }
+
 }

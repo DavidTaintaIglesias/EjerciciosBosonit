@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UpdatePersonaService {
 
-    @Autowired
-    PersonaRepo personaRepository;
+  @Autowired
+  PersonaRepo personaRepository;
+
 }

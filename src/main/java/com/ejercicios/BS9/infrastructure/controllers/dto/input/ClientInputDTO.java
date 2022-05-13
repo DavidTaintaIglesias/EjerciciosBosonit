@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ClientInputDTO {
 
-    private Integer idUser;
-    private int orders;
+  private Integer idUser;
+  private int orders;
+
 }

@@ -12,22 +12,26 @@ import java.util.List;
 @Service
 public class GetPersonService {
 
-    @Autowired
-    PersonRepository personRepository;
+  @Autowired
+  PersonRepository personRepository;
 
-    public List<PersonOutputDTO> getAllPerson(){
-        List<Person> persons = personRepository.findAll();
-        return persons.stream().map(PersonOutputDTO::new).toList();
-    }
+  public List<PersonOutputDTO> getAllPerson() {
 
-    public PersonOutputDTO getPersonById(int id){
-        PersonOutputDTO personOutputDTO = new PersonOutputDTO(personRepository.findById(id).orElseThrow(()->new NotFoundException("Person Id not found")));
-        return personOutputDTO;
-    }
+    List<Person> persons = personRepository.findAll();
+    return persons.stream().map(PersonOutputDTO::new).toList();
+  }
+
+  public PersonOutputDTO getPersonById(int id) {
+
+    PersonOutputDTO personOutputDTO = new PersonOutputDTO(personRepository.findById(id).orElseThrow(() -> new NotFoundException("Person Id not found")));
+    return personOutputDTO;
+  }
 
 
-    public PersonOutputDTO getPersonByUser(String user){
-        PersonOutputDTO personOutputDTO = new PersonOutputDTO(personRepository.findByUser(user).orElseThrow(()->new NotFoundException("User not found")));
-        return personOutputDTO;
-    }
+  public PersonOutputDTO getPersonByUser(String user) {
+
+    PersonOutputDTO personOutputDTO = new PersonOutputDTO(personRepository.findByUser(user).orElseThrow(() -> new NotFoundException("User not found")));
+    return personOutputDTO;
+  }
+
 }

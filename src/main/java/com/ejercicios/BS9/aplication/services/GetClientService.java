@@ -13,21 +13,25 @@ import java.util.List;
 @Service
 public class GetClientService {
 
-    @Autowired
-    ClientRepository clientRepository;
+  @Autowired
+  ClientRepository clientRepository;
 
-    public List<ClientOutputDTO> getAll(){
-        List<ClientEntity> clients = clientRepository.findAll();
-        return clients.stream().map(ClientOutputDTO::new).toList();
-    }
+  public List<ClientOutputDTO> getAll() {
 
-    public ClientOutputDTO getById(int id){
-        ClientOutputDTO clientOutputDTO = new ClientOutputDTO(clientRepository.findById(id).orElseThrow(()-> new NotFound("Id no encontrado")));
-        return clientOutputDTO;
-    }
+    List<ClientEntity> clients = clientRepository.findAll();
+    return clients.stream().map(ClientOutputDTO::new).toList();
+  }
 
-    public FullClientOutputDTO getFullById(int id){
-        FullClientOutputDTO fullClientOutputDTO = new FullClientOutputDTO(clientRepository.findById(id).orElseThrow(()->new NotFound("Id no encontrado")));
-        return fullClientOutputDTO;
-    }
+  public ClientOutputDTO getById(int id) {
+
+    ClientOutputDTO clientOutputDTO = new ClientOutputDTO(clientRepository.findById(id).orElseThrow(() -> new NotFound("Id no encontrado")));
+    return clientOutputDTO;
+  }
+
+  public FullClientOutputDTO getFullById(int id) {
+
+    FullClientOutputDTO fullClientOutputDTO = new FullClientOutputDTO(clientRepository.findById(id).orElseThrow(() -> new NotFound("Id no encontrado")));
+    return fullClientOutputDTO;
+  }
+
 }

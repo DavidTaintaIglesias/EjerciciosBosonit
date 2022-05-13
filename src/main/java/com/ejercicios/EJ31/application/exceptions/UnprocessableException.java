@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 //Clase para manejar el error UNPROCESSABLE_ENTITY
 @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-public class UnprocessableException extends RuntimeException{
+public class UnprocessableException extends RuntimeException {
 
-    public UnprocessableException(String message){//Mensaje recibido por parametro
-        super(message);
-    }
+  public UnprocessableException(String message) {//Mensaje recibido por parametro
+    super(message);
+  }
+
 }

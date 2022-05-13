@@ -2,52 +2,35 @@ package com.ejercicios.EJ2.application;
 
 import com.ejercicios.EJ2.domain.Persona;
 import com.ejercicios.EJ2.infrastructure.controllers.dto.input.PersonaInputDTO;
-import com.ejercicios.EJ2.infrastructure.controllers.dto.output.PersonaOutputDTO;
 import com.ejercicios.EJ2.infrastructure.repositories.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
-public class PersonaService implements Serializable {
+public class PersonaService {
 
+  @Autowired
+  PersonaRepository personaRepository;
 
-    @Autowired
-    PersonaRepository personaRepository;
+  //Recibir todos las persona de mi BBDD
+  public List<Persona> getAll() {
 
+    return personaRepository.findAll();
+  }
 
-    //Recibir todos las persona de mi BBDD
-    public ArrayList<PersonaOutputDTO> getAll() {
-        ArrayList<PersonaOutputDTO> lista= new ArrayList<PersonaOutputDTO>();
-        for (int i =1; i<=personaRepository.count();i++){
-            PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.getById(i));
-            lista.add(personaOutputDTO);
-        }
-        return lista;
+  //Buscar por ID
+  public Persona getById(int id) throws Exception {
 
-    }
+    return personaRepository.findById(id).orElseThrow(() -> new Exception("No existe ese ID"));
+  }
 
-    //Buscar por ID
-    public PersonaOutputDTO getById(int id) throws Exception{
-        PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.findById(id).orElseThrow(()-> new Exception("No existe ese ID")));
-        return personaOutputDTO;
-    }
+  //Buscar by User (En el caso de que User pueda repetirse, sino quitaria ArrayList
+  public List<Persona> getByUser(String user) {
 
-
-    //Buscar by User (En el caso de que User pueda repetirse, sino quitaria ArrayList
-    public ArrayList<PersonaOutputDTO> getByUser(String user){
-        ArrayList<Persona> listaPersonasEntities = personaRepository.findByUser(user);
-        ArrayList<PersonaOutputDTO> listaPersonasDTO = new ArrayList<PersonaOutputDTO>();
-        for(int i=0;i<listaPersonasEntities.size();i++){
-            Persona persona = listaPersonasEntities.get(i);
-            PersonaOutputDTO personaDTO = new PersonaOutputDTO(persona);
-            listaPersonasDTO.add(personaDTO);
-        }
-        return listaPersonasDTO;
-    }
+    return personaRepository.findByUser(user);
+  }
 
     /*//Buscar by User sin usar findByUser
     public ArrayList<PersonaOutputDTO> getByUser(String user){
@@ -61,46 +44,44 @@ public class PersonaService implements Serializable {
         return listaPersonasDTO;
     }*/
 
-    //Borrar por id
-    public String deleteById(int id) throws EmptyResultDataAccessException {
-        try{
-            personaRepository.deleteById(id);
-            return "Borrado el registro con el Id: "+id;
-        } catch (EmptyResultDataAccessException e){
-            return "Id no encontrado";
-        }
+  //Borrar por id
+  public void deleteById(int id) throws Exception {
+
+    boolean personExists = personaRepository.existsById(id);
+
+    if (!personExists) {
+      throw new Exception("Id no encontrado");
     }
 
-    //Modificar por id
-    public PersonaOutputDTO putById(int id, PersonaInputDTO personaInputDTO) throws EmptyResultDataAccessException{
-        try{
-            personaRepository.deleteById(id);
-            Persona personaEntity = new Persona(personaInputDTO);
-            personaRepository.save(personaEntity);
-            PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);
-            return personaOutputDTO;
-        } catch (EmptyResultDataAccessException e){
-            Persona personaEntity = new Persona(personaInputDTO);
-            personaRepository.save(personaEntity);
-            PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);
-            return personaOutputDTO;
-        }
-    }
+    personaRepository.deleteById(id);
+  }
 
-    //Añadir personas
-    public PersonaOutputDTO setPersona(PersonaInputDTO personaDTO) throws Exception{
-        if(personaDTO.getUser()!=null){
-            if(personaDTO.getUser().length()<6 || personaDTO.getUser().length()>10){
-                throw new Exception("User debe estar entre 6 y 10 caracteres");
-            } else {
-                Persona personaEntity = new Persona(personaDTO);//Convierto InputDTO en Entity con el constructor de Entity
-                personaRepository.save(personaEntity);//Almaceno Entity en mi repositorio
-                PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);//Convierto Entity en OutputDTO con el constructor de DTO
-                System.out.println("Persona añadida");
-                return personaOutputDTO;
-            }
-        } else {
-            throw new Exception("User no puede estar vacio");
-        }
-    }
+  //Modificar por id
+  public Persona editPersona(int id, PersonaInputDTO personaInputDTO) throws Exception {
+
+    Persona persona = personaRepository.findById(id).orElseThrow(() -> new Exception("Persona no encontrada"));
+
+    persona.setUser(personaInputDTO.getUser());
+    persona.setPassword(personaInputDTO.getPassword());
+    persona.setName(personaInputDTO.getName());
+    persona.setSurname(personaInputDTO.getSurname());
+    persona.setCompanyEmail(personaInputDTO.getCompanyEmail());
+    persona.setPersonalEmail(personaInputDTO.getPersonalEmail());
+    persona.setCity(personaInputDTO.getCity());
+    persona.setActive(personaInputDTO.getActive());
+    persona.setDate(personaInputDTO.getDate());
+    persona.setImageUrl(personaInputDTO.getImageUrl());
+    persona.setTerminationDate(personaInputDTO.getTerminationDate());
+
+    return personaRepository.save(persona);
+  }
+
+  //Añadir personas
+  public Persona createPersona(PersonaInputDTO personaDTO) {
+
+    Persona personaEntity = new Persona(personaDTO);//Convierto InputDTO en Entity con el constructor de Entity
+
+    return personaRepository.save(personaEntity);//Almaceno Entity en mi repositorio
+  }
+
 }

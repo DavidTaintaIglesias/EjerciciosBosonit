@@ -10,13 +10,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class PostSubjetService {
 
-    @Autowired
-    SubjetsRepository subjetsRepository;
+  @Autowired
+  SubjetsRepository subjetsRepository;
 
-    public SubjetOutputDTO postSubjet(SubjetInputDTO subjetInputDTO){
-        Subjet subjet = new Subjet(subjetInputDTO);
-        subjetsRepository.save(subjet);
-        SubjetOutputDTO subjetOutputDTO = new SubjetOutputDTO(subjet);
-        return subjetOutputDTO;
-    }
+  public SubjetOutputDTO postSubjet(SubjetInputDTO subjetInputDTO) {
+
+    Subjet subjet = new Subjet(subjetInputDTO);
+    subjetsRepository.save(subjet);
+    SubjetOutputDTO subjetOutputDTO = new SubjetOutputDTO(subjet);
+    return subjetOutputDTO;
+  }
+
 }

@@ -14,50 +14,56 @@ import java.util.List;
 @NoArgsConstructor
 public class Student implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_student")
-    Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_student")
+  Integer id;
 
-    @OneToOne
-    @JoinColumn(name = "id_person")
-    Person person;
+  @OneToOne
+  @JoinColumn(name = "id_person")
+  Person person;
 
-    @Column(name = "num_hours_week")
-    int numHours;
+  @Column(name = "num_hours_week")
+  int numHours;
 
-    @Column(name = "coments")
-    String coments;
+  @Column(name = "coments")
+  String coments;
 
-    @OneToOne
-    @JoinColumn(name = "id_profesor")
-    Profesor profesor;
+  @OneToOne
+  @JoinColumn(name = "id_profesor")
+  Profesor profesor;
 
-    @Column(name = "branch")
-    String branch;
+  @Column(name = "branch")
+  String branch;
 
-    @OneToMany
-    List<Subjet> subjets;
+  @OneToMany
+  List<Subjet> subjets;
 
-    public Student(StudentInputDTO studentInputDTO){
-        setNumHours(studentInputDTO.getNumHours());
-        setComents(studentInputDTO.getComents());
-        setBranch(studentInputDTO.getBranch());
-    }
+  public Student(StudentInputDTO studentInputDTO) {
 
-    public void addSubjet(Subjet subjet){
-        subjets.add(subjet);
-    }
+    setNumHours(studentInputDTO.getNumHours());
+    setComents(studentInputDTO.getComents());
+    setBranch(studentInputDTO.getBranch());
+  }
 
-    public void removeSubjet(Subjet subjet){
-        subjets.remove(subjet);
-    }
+  public void addSubjet(Subjet subjet) {
 
-    public void addProfesor(Profesor profesor){
-        setProfesor(profesor);
-    }
+    subjets.add(subjet);
+  }
 
-    public void addPerson(Person person){
-        setPerson(person);
-    }
+  public void removeSubjet(Subjet subjet) {
+
+    subjets.remove(subjet);
+  }
+
+  public void addProfesor(Profesor profesor) {
+
+    setProfesor(profesor);
+  }
+
+  public void addPerson(Person person) {
+
+    setPerson(person);
+  }
+
 }

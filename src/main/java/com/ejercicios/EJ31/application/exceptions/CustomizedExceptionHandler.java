@@ -14,27 +14,32 @@ import java.util.Map;
 @RestControllerAdvice
 public class CustomizedExceptionHandler {
 
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(NotFoundException.class)
-    public final CustomError handleNotFoundException(NotFoundException ex){
-        CustomError customError = new CustomError(new Date(), ex.getMessage(), HttpStatus.NOT_FOUND.value());
-        return customError;
-    }
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  @ExceptionHandler(NotFoundException.class)
+  public final CustomError handleNotFoundException(NotFoundException ex) {
 
-    //Coge la fecha y hora, el mensaje obtenido del error y un valor http que queramos y lo introduce en mi Custom error
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)//Devuelve el error y el código de error http de la pagina al saltar este error
-    @ExceptionHandler(UnprocessableException.class)
-    public final CustomError handleUnprocessableException(UnprocessableException ex){
-        CustomError customError = new CustomError(new Date(), ex.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY.value());
-        return customError;
-    }
+    CustomError customError = new CustomError(new Date(), ex.getMessage(), HttpStatus.NOT_FOUND.value());
+    return customError;
+  }
 
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleBadRequest (MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();//Mapa de errores para recogerlos todos y mostrarlos a la vez
-        ex.getBindingResult().getFieldErrors().forEach(e->errors.put(e.getField(), e.getDefaultMessage()));
-        return errors;
+  //Coge la fecha y hora, el mensaje obtenido del error y un valor http que queramos y lo introduce en mi Custom error
+  @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+//Devuelve el error y el código de error http de la pagina al saltar este error
+  @ExceptionHandler(UnprocessableException.class)
+  public final CustomError handleUnprocessableException(UnprocessableException ex) {
 
-    }
+    CustomError customError = new CustomError(new Date(), ex.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY.value());
+    return customError;
+  }
+
+  @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  public Map<String, String> handleBadRequest(MethodArgumentNotValidException ex) {
+
+    Map<String, String> errors = new HashMap<>();//Mapa de errores para recogerlos todos y mostrarlos a la vez
+    ex.getBindingResult().getFieldErrors().forEach(e -> errors.put(e.getField(), e.getDefaultMessage()));
+    return errors;
+
+  }
+
 }

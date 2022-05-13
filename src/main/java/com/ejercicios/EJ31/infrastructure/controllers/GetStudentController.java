@@ -12,20 +12,23 @@ import java.util.List;
 @RequestMapping("/EJ31/getStudent")
 public class GetStudentController {
 
-    @Autowired
-    GetStudentService getStudentService;
+  @Autowired
+  GetStudentService getStudentService;
 
-    @GetMapping("/all")
-    public List<StudentOutputDTO> getAll(){
-        return getStudentService.getAll();
-    }
+  @GetMapping("/all")
+  public List<StudentOutputDTO> getAll() {
 
-    @GetMapping("/byId/{id}")
-    public Object getById(@PathVariable int id, @RequestParam(defaultValue = "simple") String outputType){
-        if (outputType.equals("simple")){
-            return getStudentService.getById(id);
-        } else if(outputType.equals("full")){
-            return getStudentService.getFullById(id);
-        } else throw new UnprocessableException("outputType must be 'simple' or 'full'");
-    }
+    return getStudentService.getAll();
+  }
+
+  @GetMapping("/byId/{id}")
+  public Object getById(@PathVariable int id, @RequestParam(defaultValue = "simple") String outputType) {
+
+    if (outputType.equals("simple")) {
+      return getStudentService.getById(id);
+    } else if (outputType.equals("full")) {
+      return getStudentService.getFullById(id);
+    } else throw new UnprocessableException("outputType must be 'simple' or 'full'");
+  }
+
 }

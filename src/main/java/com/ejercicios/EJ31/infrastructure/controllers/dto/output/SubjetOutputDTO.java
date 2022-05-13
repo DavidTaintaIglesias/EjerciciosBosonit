@@ -10,17 +10,19 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class SubjetOutputDTO {
 
-    private Integer id;
-    private String name;
-    private String coments;
-    private LocalDate initialDate;
-    private LocalDate finishDate;
+  private Integer id;
+  private String name;
+  private String coments;
+  private LocalDate initialDate;
+  private LocalDate finishDate;
 
-    public SubjetOutputDTO (Subjet studentSubjets){
-        setId(studentSubjets.getId());
-        setName(studentSubjets.getName());
-        setComents(studentSubjets.getComents());
-        setInitialDate(studentSubjets.getInitialDate());
-        setFinishDate(studentSubjets.getFinishDate());
-    }
+  public SubjetOutputDTO(Subjet studentSubjets) {
+
+    setId(studentSubjets.getId());
+    setName(studentSubjets.getName());
+    setComents(studentSubjets.getComents());
+    setInitialDate(studentSubjets.getInitialDate());
+    setFinishDate(studentSubjets.getFinishDate());
+  }
+
 }

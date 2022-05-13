@@ -14,12 +14,14 @@ import javax.validation.Valid;
 @RestController
 public class PostPersonControllerBS12 {
 
-    @Autowired
-    PostPersonServiceBS12 postPersonService;
+  @Autowired
+  PostPersonServiceBS12 postPersonService;
 
-    @PostMapping("/addperson")
-    @CrossOrigin("*")
-    public PersonOutputDTOBS12 postPerson(@Valid @RequestBody PersonInputDTOBS12 personInputDTO){
-        return postPersonService.postPerson(personInputDTO);
-    }
+  @PostMapping("/addperson")
+  @CrossOrigin("*")
+  public PersonOutputDTOBS12 postPerson(@Valid @RequestBody PersonInputDTOBS12 personInputDTO) {
+
+    return postPersonService.postPerson(personInputDTO);
+  }
+
 }

@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/BS9")
 public class PostUserController {
 
-    @Autowired
-    PostUserService postUserService;
+  @Autowired
+  PostUserService postUserService;
 
-    @PostMapping("/postuser")
-    public UserOutputDTO postUser(@RequestBody UserInputDTO userInputDTO){
-        return postUserService.postUser(userInputDTO);
-    }
+  @PostMapping("/postuser")
+  public UserOutputDTO postUser(@RequestBody UserInputDTO userInputDTO) {
+
+    return postUserService.postUser(userInputDTO);
+  }
+
 }

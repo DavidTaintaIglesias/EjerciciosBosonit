@@ -10,11 +10,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class SubjetInputDTO {
 
-    private String name;
-    private String coments;
+  private String name;
+  private String coments;
 
-    @NotNull
-    private LocalDate initialDate;
+  @NotNull
+  private LocalDate initialDate;
 
-    private LocalDate finishDate;
+  private LocalDate finishDate;
+
 }

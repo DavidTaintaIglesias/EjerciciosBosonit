@@ -14,28 +14,30 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Subjet implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_subjet")
-    Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_subjet")
+  Integer id;
 
-    @Column(name = "name")
-    String name;
+  @Column(name = "name")
+  String name;
 
-    @Column(name = "coments")
-    String coments;
+  @Column(name = "coments")
+  String coments;
 
 
-    @Column(name = "initial_date")
-    LocalDate initialDate;
+  @Column(name = "initial_date")
+  LocalDate initialDate;
 
-    @Column(name = "finish_date")
-    LocalDate finishDate;
+  @Column(name = "finish_date")
+  LocalDate finishDate;
 
-    public Subjet(SubjetInputDTO subjetInputDTO){
-        setName(subjetInputDTO.getName());
-        setComents(subjetInputDTO.getComents());
-        setInitialDate(subjetInputDTO.getInitialDate());
-        setFinishDate(subjetInputDTO.getFinishDate());
-    }
+  public Subjet(SubjetInputDTO subjetInputDTO) {
+
+    setName(subjetInputDTO.getName());
+    setComents(subjetInputDTO.getComents());
+    setInitialDate(subjetInputDTO.getInitialDate());
+    setFinishDate(subjetInputDTO.getFinishDate());
+  }
+
 }

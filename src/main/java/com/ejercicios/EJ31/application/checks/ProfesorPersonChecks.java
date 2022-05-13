@@ -12,32 +12,36 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProfesorPersonChecks {
 
-    @Autowired
-    PersonRepository personRepository;
+  @Autowired
+  PersonRepository personRepository;
 
-    @Autowired
-    ProfesorRepository profesorRepository;
+  @Autowired
+  ProfesorRepository profesorRepository;
 
-    public void personCheck(int id){
-        personRepository.findById(id).orElseThrow(()->new NotFoundException("Person Id not found"));
+  public void personCheck(int id) {
+
+    personRepository.findById(id).orElseThrow(() -> new NotFoundException("Person Id not found"));
+  }
+
+  public void validProfesor(int id) {
+
+    Person person = personRepository.getById(id);
+    if (person.getIdProfesor() != null) {
+      throw new UnprocessableException("This Person is already a profesor");
     }
-
-    public void validProfesor(int id){
-        Person person = personRepository.getById(id);
-        if(person.getIdProfesor()!=null){
-            throw new UnprocessableException("This Person is already a profesor");
-        }
-        if(person.getIdStudent()!=null){
-            throw new UnprocessableException("This Person is already a Student");
-        }
+    if (person.getIdStudent() != null) {
+      throw new UnprocessableException("This Person is already a Student");
     }
+  }
 
-    public void addPersonToProfesor (int idPerson, int idProfesor){
-        Person person = personRepository.getById(idPerson);
-        Profesor profesor = profesorRepository.getById(idProfesor);
-        profesor.setPerson(person);
-        profesorRepository.save(profesor);
-        person.setIdProfesor(profesor.getId());
-        personRepository.save(person);
-    }
+  public void addPersonToProfesor(int idPerson, int idProfesor) {
+
+    Person person = personRepository.getById(idPerson);
+    Profesor profesor = profesorRepository.getById(idProfesor);
+    profesor.setPerson(person);
+    profesorRepository.save(profesor);
+    person.setIdProfesor(profesor.getId());
+    personRepository.save(person);
+  }
+
 }

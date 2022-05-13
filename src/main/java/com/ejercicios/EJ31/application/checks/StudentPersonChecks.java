@@ -12,32 +12,36 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentPersonChecks {
 
-    @Autowired
-    StudentRepository studentRepository;
+  @Autowired
+  StudentRepository studentRepository;
 
-    @Autowired
-    PersonRepository personRepository;
+  @Autowired
+  PersonRepository personRepository;
 
-    public void personCheck(int id){
-        personRepository.findById(id).orElseThrow(()->new NotFoundException("Person Id not found"));
+  public void personCheck(int id) {
+
+    personRepository.findById(id).orElseThrow(() -> new NotFoundException("Person Id not found"));
+  }
+
+  public void validStudent(int id) {
+
+    Person person = personRepository.getById(id);
+    if (person.getIdStudent() != null) {
+      throw new UnprocessableException("This Person is already a Student");
     }
-
-    public void validStudent(int id){
-        Person person = personRepository.getById(id);
-        if(person.getIdStudent()!=null){
-            throw  new UnprocessableException("This Person is already a Student");
-        }
-        if(person.getIdProfesor()!=null){
-            throw new UnprocessableException("This person is already a Profesor");
-        }
+    if (person.getIdProfesor() != null) {
+      throw new UnprocessableException("This person is already a Profesor");
     }
+  }
 
-    public void addPersontoStudent(int idPerson, int idStudent){
-        Person person = personRepository.getById(idPerson);
-        Student student = studentRepository.getById(idStudent);
-        student.setPerson(person);
-        studentRepository.save(student);
-        person.setIdStudent(student.getId());
-        personRepository.save(person);
-    }
+  public void addPersontoStudent(int idPerson, int idStudent) {
+
+    Person person = personRepository.getById(idPerson);
+    Student student = studentRepository.getById(idStudent);
+    student.setPerson(person);
+    studentRepository.save(student);
+    person.setIdStudent(student.getId());
+    personRepository.save(person);
+  }
+
 }

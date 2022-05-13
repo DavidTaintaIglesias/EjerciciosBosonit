@@ -10,15 +10,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class DeletePersonaService {
 
-    @Autowired
-    PersonaRepo personaRepository;
+  @Autowired
+  PersonaRepo personaRepository;
 
-    public String deleteById(int id){
-        try {
-            personaRepository.deleteById(id);
-            return "Registro con id "+id+" borrado.";
-        } catch (EmptyResultDataAccessException es){
-            throw new NotFound("Id no encontrado");
-        }
+  public String deleteById(int id) {
+
+    try {
+      personaRepository.deleteById(id);
+      return "Registro con id " + id + " borrado.";
+    } catch (EmptyResultDataAccessException es) {
+      throw new NotFound("Id no encontrado");
     }
+  }
+
 }

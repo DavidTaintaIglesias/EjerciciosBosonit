@@ -15,11 +15,13 @@ import javax.validation.Valid;
 @RequestMapping("/EJ31")
 public class PostProfesorController {
 
-    @Autowired
-    PostProfesorService postProfesorService;
+  @Autowired
+  PostProfesorService postProfesorService;
 
-    @PostMapping("/postProfesor")
-    public ProfesorOutputDTO postProfesor(@Valid @RequestBody ProfesorInputDTO profesorInputDTO){
-        return postProfesorService.postProfesor(profesorInputDTO);
-    }
+  @PostMapping("/postProfesor")
+  public ProfesorOutputDTO postProfesor(@Valid @RequestBody ProfesorInputDTO profesorInputDTO) {
+
+    return postProfesorService.postProfesor(profesorInputDTO);
+  }
+
 }

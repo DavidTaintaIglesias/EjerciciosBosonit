@@ -8,13 +8,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ClientOutputDTO {
 
-    private Integer id;
-    private Integer idUser;
-    private int orders;
+  private Integer id;
+  private Integer idUser;
+  private int orders;
 
-    public ClientOutputDTO (ClientEntity clientEntity){
-        setId(clientEntity.getId());
-        setIdUser(clientEntity.getUser().getId());
-        setOrders(clientEntity.getOrders());
-    }
+  public ClientOutputDTO(ClientEntity clientEntity) {
+
+    setId(clientEntity.getId());
+    setIdUser(clientEntity.getUser().getId());
+    setOrders(clientEntity.getOrders());
+  }
+
 }

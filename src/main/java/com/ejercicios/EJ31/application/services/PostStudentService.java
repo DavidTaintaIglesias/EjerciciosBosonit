@@ -12,24 +12,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class PostStudentService {
 
-    @Autowired
-    StudentRepository studentRepository;
+  @Autowired
+  StudentRepository studentRepository;
 
-    @Autowired
-    StudentPersonChecks checkPerson;
+  @Autowired
+  StudentPersonChecks checkPerson;
 
-    @Autowired
-    StudentProfesorChecks checkProfesor;
+  @Autowired
+  StudentProfesorChecks checkProfesor;
 
-    public StudentOutputDTO postStudent(StudentInputDTO studentInputDTO){
-        checkPerson.personCheck(studentInputDTO.getIdPerson());
-        checkPerson.validStudent(studentInputDTO.getIdPerson());
-        checkProfesor.profesorCheck(studentInputDTO.getIdProfesor());
-        Student student = new Student(studentInputDTO);
-        studentRepository.save(student);
-        checkPerson.addPersontoStudent(studentInputDTO.getIdPerson(),student.getId());
-        checkProfesor.addProfesorToStudent(studentInputDTO.getIdProfesor(),student.getId());
-        StudentOutputDTO studentOutputDTO = new StudentOutputDTO(student);
-        return studentOutputDTO;
-    }
+  public StudentOutputDTO postStudent(StudentInputDTO studentInputDTO) {
+
+    checkPerson.personCheck(studentInputDTO.getIdPerson());
+    checkPerson.validStudent(studentInputDTO.getIdPerson());
+    checkProfesor.profesorCheck(studentInputDTO.getIdProfesor());
+    Student student = new Student(studentInputDTO);
+    studentRepository.save(student);
+    checkPerson.addPersontoStudent(studentInputDTO.getIdPerson(), student.getId());
+    checkProfesor.addProfesorToStudent(studentInputDTO.getIdProfesor(), student.getId());
+    StudentOutputDTO studentOutputDTO = new StudentOutputDTO(student);
+    return studentOutputDTO;
+  }
+
 }

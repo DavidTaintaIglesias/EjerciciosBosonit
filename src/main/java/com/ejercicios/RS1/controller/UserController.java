@@ -9,23 +9,27 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/RS1/user")
 public class UserController {
 
-    @Autowired
-    UserService userService;
+  @Autowired
+  UserService userService;
 
-    @PostMapping
-    public User postUser(@RequestBody User u){
-        userService.postGreeting(u);
-        return u;
-    }
+  @PostMapping
+  public User postUser(@RequestBody User u) {
 
-    @GetMapping("/{id}")
-    public String saludoId(@PathVariable String id){
-        return "Hola usuario numero "+id;
-    }
+    userService.postGreeting(u);
+    return u;
+  }
 
-    @PutMapping
-    public User putGreeting(@RequestParam (defaultValue = "sin nombre") String nombre, @RequestParam (defaultValue = "-1") int id){
-        User user = new User(id, nombre);
-        return user;
-    }
+  @GetMapping("/{id}")
+  public String saludoId(@PathVariable String id) {
+
+    return "Hola usuario numero " + id;
+  }
+
+  @PutMapping
+  public User putGreeting(@RequestParam(defaultValue = "sin nombre") String nombre, @RequestParam(defaultValue = "-1") int id) {
+
+    User user = new User(id, nombre);
+    return user;
+  }
+
 }

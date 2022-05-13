@@ -9,10 +9,11 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class ProfesorInputDTO {
 
-    private Integer idPerson;
+  private Integer idPerson;
 
-    private String coments;
+  private String coments;
 
-    @NotNull(message = "branch cannot be null")
-    private String branch;
+  @NotNull(message = "branch cannot be null")
+  private String branch;
+
 }

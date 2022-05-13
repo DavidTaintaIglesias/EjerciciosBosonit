@@ -10,13 +10,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class PostUserService {
 
-    @Autowired
-    UserRepository userRepository;
+  @Autowired
+  UserRepository userRepository;
 
-    public UserOutputDTO postUser(UserInputDTO userInputDTO){
-        UserEntity user = new UserEntity(userInputDTO);
-        userRepository.save(user);
-        UserOutputDTO userOutputDTO = new UserOutputDTO(user);
-        return userOutputDTO;
-    }
+  public UserOutputDTO postUser(UserInputDTO userInputDTO) {
+
+    UserEntity user = new UserEntity(userInputDTO);
+    userRepository.save(user);
+    UserOutputDTO userOutputDTO = new UserOutputDTO(user);
+    return userOutputDTO;
+  }
+
 }

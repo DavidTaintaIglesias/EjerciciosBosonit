@@ -8,30 +8,34 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/EJ2")
 public class GetController {
 
-    @Autowired
-    PersonaService personaService;
+  @Autowired
+  PersonaService personaService;
 
-    //Ver todos los valores
-    @GetMapping("/getall")
-    public ArrayList<PersonaOutputDTO> getPersonas(){
-        return personaService.getAll();
-    }
+  //Ver todos los valores
+  @GetMapping
+  public List<PersonaOutputDTO> getPersonas() {
 
-    //Buscar por id
-    @GetMapping("/getbyid/{id}")
-    public PersonaOutputDTO getPersonById(@PathVariable int id) throws Exception{
-        return personaService.getById(id);
-    }
+    return personaService.getAll().stream().map(PersonaOutputDTO::new).toList();
+  }
 
-    //Buscar por User
-    @GetMapping("/getbyuser/{user}")
-    public ArrayList<PersonaOutputDTO> getPersonByUser(@PathVariable String user){
-        return personaService.getByUser(user);
-    }
+  //Buscar por id
+  @GetMapping("/{id}")
+  public PersonaOutputDTO getPersonById(@PathVariable int id) throws Exception {
+
+    return new PersonaOutputDTO(personaService.getById(id));
+  }
+
+  //Buscar por User
+  @GetMapping("/getbyuser/{user}")
+  public List<PersonaOutputDTO> getPersonByUser(@PathVariable String user) {
+
+    return personaService.getByUser(user).stream().map(PersonaOutputDTO::new).toList();
+  }
+
 }

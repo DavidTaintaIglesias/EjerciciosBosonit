@@ -11,20 +11,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentProfesorChecks {
 
-    @Autowired
-    StudentRepository studentRepository;
+  @Autowired
+  StudentRepository studentRepository;
 
-    @Autowired
-    ProfesorRepository profesorRepository;
+  @Autowired
+  ProfesorRepository profesorRepository;
 
-    public void profesorCheck(int id){
-        profesorRepository.findById(id).orElseThrow(()->new NotFoundException("Profesor Id not found"));
-    }
+  public void profesorCheck(int id) {
 
-    public void addProfesorToStudent(int idProfesor, int idStudent){
-        Profesor profesor = profesorRepository.getById(idProfesor);
-        Student student = studentRepository.getById(idStudent);
-        student.setProfesor(profesor);
-        studentRepository.save(student);
-    }
+    profesorRepository.findById(id).orElseThrow(() -> new NotFoundException("Profesor Id not found"));
+  }
+
+  public void addProfesorToStudent(int idProfesor, int idStudent) {
+
+    Profesor profesor = profesorRepository.getById(idProfesor);
+    Student student = studentRepository.getById(idStudent);
+    student.setProfesor(profesor);
+    studentRepository.save(student);
+  }
+
 }

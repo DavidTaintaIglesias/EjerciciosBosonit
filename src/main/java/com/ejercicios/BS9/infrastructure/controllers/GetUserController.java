@@ -18,40 +18,45 @@ import java.util.List;
 @RequestMapping("/BS9/getuser")
 public class GetUserController {
 
-    @Autowired
-    GetUserService getUserService;
+  @Autowired
+  GetUserService getUserService;
 
-    @Autowired
-    IFeignClient iFeignClient;
-    //Instanciar la interfaz
+  @Autowired
+  IFeignClient iFeignClient;
+  //Instanciar la interfaz
 
-    @GetMapping("/all")
-    public List<UserOutputDTO> getAll(){
-        return getUserService.getAll();
-    }
+  @GetMapping("/all")
+  public List<UserOutputDTO> getAll() {
 
-    @GetMapping("/ById/{id}")
-    public UserOutputDTO getById(@PathVariable int id){
-        return getUserService.getById(id);
-    }
+    return getUserService.getAll();
+  }
 
-    //Uso de RestTemplate
-    @GetMapping("/client/{id}")
-    public ClientOutputDTO getClient(@PathVariable int id){
-        System.out.println("Template: Pido en User el cliente "+id);
-        ResponseEntity<ClientOutputDTO> respuesta = new RestTemplate().getForEntity("http://localhost:8080/BS9/getclient/byid/"+id, ClientOutputDTO.class);
-        //url del endpoint al que estoy llamando, clase del tipo de objeto que me devuelve el endpoint al que llamo
-        System.out.println("Template: Ya me han devuelto en User el cliente "+id);
-        return respuesta.getBody();
-    }
+  @GetMapping("/ById/{id}")
+  public UserOutputDTO getById(@PathVariable int id) {
 
-    //Uso de Feign
-    @GetMapping("/client/feign/{id}")
-    public ClientOutputDTO getClientByFeign(@PathVariable int id){
-        System.out.println("Feign: Pido en User el cliente "+id);
-        ClientOutputDTO respuesta = iFeignClient.callClient(id);
-        //con este código en esta url en la que estoy llamando a la interfaz hago que iFeignClient llame a la url de la interfaz
-        System.out.println("Feign: Ya me han devuelto en User el cliente "+id);
-        return respuesta;
-    }
+    return getUserService.getById(id);
+  }
+
+  //Uso de RestTemplate
+  @GetMapping("/client/{id}")
+  public ClientOutputDTO getClient(@PathVariable int id) {
+
+    System.out.println("Template: Pido en User el cliente " + id);
+    ResponseEntity<ClientOutputDTO> respuesta = new RestTemplate().getForEntity("http://localhost:8080/BS9/getclient/byid/" + id, ClientOutputDTO.class);
+    //url del endpoint al que estoy llamando, clase del tipo de objeto que me devuelve el endpoint al que llamo
+    System.out.println("Template: Ya me han devuelto en User el cliente " + id);
+    return respuesta.getBody();
+  }
+
+  //Uso de Feign
+  @GetMapping("/client/feign/{id}")
+  public ClientOutputDTO getClientByFeign(@PathVariable int id) {
+
+    System.out.println("Feign: Pido en User el cliente " + id);
+    ClientOutputDTO respuesta = iFeignClient.callClient(id);
+    //con este código en esta url en la que estoy llamando a la interfaz hago que iFeignClient llame a la url de la interfaz
+    System.out.println("Feign: Ya me han devuelto en User el cliente " + id);
+    return respuesta;
+  }
+
 }

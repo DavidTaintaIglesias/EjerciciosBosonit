@@ -12,16 +12,19 @@ import java.util.List;
 @Service
 public class GetUserService {
 
-    @Autowired
-    UserRepository userRepository;
+  @Autowired
+  UserRepository userRepository;
 
-    public List<UserOutputDTO> getAll(){
-        List<UserEntity> users =  userRepository.findAll();
-        return users.stream().map(UserOutputDTO::new).toList();
-    }
+  public List<UserOutputDTO> getAll() {
 
-    public UserOutputDTO getById(int id){
-        UserOutputDTO userOutputDTO = new UserOutputDTO(userRepository.findById(id).orElseThrow(()->new NotFound("ID no encontrado")));
-        return userOutputDTO;
-    }
+    List<UserEntity> users = userRepository.findAll();
+    return users.stream().map(UserOutputDTO::new).toList();
+  }
+
+  public UserOutputDTO getById(int id) {
+
+    UserOutputDTO userOutputDTO = new UserOutputDTO(userRepository.findById(id).orElseThrow(() -> new NotFound("ID no encontrado")));
+    return userOutputDTO;
+  }
+
 }

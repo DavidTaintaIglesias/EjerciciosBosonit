@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/EJ31")
 public class SubjetStudentController {
 
-    @Autowired
-    SubjetsStudentService subjetsStudentService;
+  @Autowired
+  SubjetsStudentService subjetsStudentService;
 
     /*@PostMapping("/addSubjet/{idSubjet}/{idStudent}")
     public String addSubjet(@PathVariable int idSubjet, @PathVariable Integer idStudent){
@@ -26,12 +26,14 @@ public class SubjetStudentController {
         } else throw new UnprocessableException("Student Id required");
     }*/
 
-    @PutMapping("/student/{idStudent}/subjet/{idSubjet}")
-    public String studentSubjet(@PathVariable int idStudent, @PathVariable int idSubjet, @RequestParam(defaultValue = "error") String putType){
-        if(putType.equals("add")){
-            return subjetsStudentService.addSubjet(idStudent, idSubjet);
-        } else if(putType.equals("remove")){
-            return subjetsStudentService.removeSubjet(idStudent, idSubjet);
-        } else throw new UnprocessableException("putType must be 'add' or 'remove'");
-    }
+  @PutMapping("/student/{idStudent}/subjet/{idSubjet}")
+  public String studentSubjet(@PathVariable int idStudent, @PathVariable int idSubjet, @RequestParam(defaultValue = "error") String putType) {
+
+    if (putType.equals("add")) {
+      return subjetsStudentService.addSubjet(idStudent, idSubjet);
+    } else if (putType.equals("remove")) {
+      return subjetsStudentService.removeSubjet(idStudent, idSubjet);
+    } else throw new UnprocessableException("putType must be 'add' or 'remove'");
+  }
+
 }

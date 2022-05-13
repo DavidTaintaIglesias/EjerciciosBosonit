@@ -14,61 +14,63 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Person implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_person")
-    Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_person")
+  Integer id;
 
-    @Column(name = "user")
-    String user;
+  @Column(name = "user")
+  String user;
 
-    @Column(name = "password")
-    String password;
+  @Column(name = "password")
+  String password;
 
-    @Column(name = "name")
-    String name;
+  @Column(name = "name")
+  String name;
 
-    @Column(name = "surname")
-    String surname;
+  @Column(name = "surname")
+  String surname;
 
-    @Column(name = "company_email")
-    String companyEmail;
+  @Column(name = "company_email")
+  String companyEmail;
 
-    @Column(name = "personal_email")
-    String personalEmail;
+  @Column(name = "personal_email")
+  String personalEmail;
 
-    @Column(name = "city")
-    String city;
+  @Column(name = "city")
+  String city;
 
-    @Column(name = "active")
-    boolean active;
+  @Column(name = "active")
+  boolean active;
 
-    @Column(name = "created_date")
-    LocalDate createdDate;
+  @Column(name = "created_date")
+  LocalDate createdDate;
 
-    @Column(name = "imagen_url")
-    String imageUrl;
+  @Column(name = "imagen_url")
+  String imageUrl;
 
-    @Column(name = "termination_date")
-    LocalDate terminationDate;
+  @Column(name = "termination_date")
+  LocalDate terminationDate;
 
-    @Column(name = "id_student")
-    Integer idStudent;
+  @Column(name = "id_student")
+  Integer idStudent;
 
-    @Column(name = "id_profesor")
-    Integer idProfesor;
+  @Column(name = "id_profesor")
+  Integer idProfesor;
 
-    public Person(PersonInputDTO personInputDTO){
-        setUser(personInputDTO.getUser());
-        setPassword(personInputDTO.getPassword());
-        setName(personInputDTO.getName());
-        setSurname(personInputDTO.getSurname());
-        setCompanyEmail(personInputDTO.getCompanyEmail());
-        setPersonalEmail(personInputDTO.getPersonalEmail());
-        setCity(personInputDTO.getCity());
-        setActive(personInputDTO.isActive());
-        setCreatedDate(personInputDTO.getCreatedDate());
-        setImageUrl(personInputDTO.getImageUrl());
-        setTerminationDate(personInputDTO.getTerminationDate());
-    }
+  public Person(PersonInputDTO personInputDTO) {
+
+    setUser(personInputDTO.getUser());
+    setPassword(personInputDTO.getPassword());
+    setName(personInputDTO.getName());
+    setSurname(personInputDTO.getSurname());
+    setCompanyEmail(personInputDTO.getCompanyEmail());
+    setPersonalEmail(personInputDTO.getPersonalEmail());
+    setCity(personInputDTO.getCity());
+    setActive(personInputDTO.isActive());
+    setCreatedDate(personInputDTO.getCreatedDate());
+    setImageUrl(personInputDTO.getImageUrl());
+    setTerminationDate(personInputDTO.getTerminationDate());
+  }
+
 }

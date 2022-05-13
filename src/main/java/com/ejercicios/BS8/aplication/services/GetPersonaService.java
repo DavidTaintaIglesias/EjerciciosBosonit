@@ -13,21 +13,25 @@ import java.util.List;
 @Service
 public class GetPersonaService {
 
-    @Autowired
-    PersonaRepo personaRepository;
+  @Autowired
+  PersonaRepo personaRepository;
 
-    public List<PersonaOutputDTO> getAll(){
-        List<PersonaEntity> personas = personaRepository.findAll();
-        return personas.stream().map(PersonaOutputDTO::new).toList();//Con el stream.map convierto la lista en mi lista de DTO y lo muestro.
-    }
+  public List<PersonaOutputDTO> getAll() {
 
-    public PersonaOutputDTO getById(int id){
-        PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.findById(id).orElseThrow(()-> new NotFound("Id no encontrado")));
-        return personaOutputDTO;
-    }
+    List<PersonaEntity> personas = personaRepository.findAll();
+    return personas.stream().map(PersonaOutputDTO::new).toList();//Con el stream.map convierto la lista en mi lista de DTO y lo muestro.
+  }
 
-    public PersonaOutputDTO getByUser(String user){
-        PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.findByUser(user).orElseThrow(()-> new NotFound("User no encontrado")));
-        return personaOutputDTO;
-    }
+  public PersonaOutputDTO getById(int id) {
+
+    PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.findById(id).orElseThrow(() -> new NotFound("Id no encontrado")));
+    return personaOutputDTO;
+  }
+
+  public PersonaOutputDTO getByUser(String user) {
+
+    PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.findByUser(user).orElseThrow(() -> new NotFound("User no encontrado")));
+    return personaOutputDTO;
+  }
+
 }
