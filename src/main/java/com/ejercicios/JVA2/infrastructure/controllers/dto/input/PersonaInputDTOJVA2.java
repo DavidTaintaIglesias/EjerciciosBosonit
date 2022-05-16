@@ -2,9 +2,24 @@ package com.ejercicios.JVA2.infrastructure.controllers.dto.input;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-@Data
+public record PersonaInputDTOJVA2(
+        String user,
+        String password,
+        String name,
+        String surname,
+        String companyEmail,
+        String personalEmail,
+        String city,
+        Boolean active,
+        LocalDate date,
+        String imageUrl,
+        LocalDate termination_date
+) {
+}
+
+/*@Data
 public class PersonaInputDTOJVA2 {
 
 
@@ -21,4 +36,5 @@ public class PersonaInputDTOJVA2 {
     private Date termination_date;
 
 
-}
+}*/
+

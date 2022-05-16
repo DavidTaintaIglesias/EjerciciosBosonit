@@ -62,8 +62,8 @@ public class PersonaServiceJVA2 implements Serializable {
 
     //Añadir personas
     public PersonaJVA2 setPersona(PersonaInputDTOJVA2 personaDTO) throws Exception{
-        if(personaDTO.getUser()!=null){
-            if(personaDTO.getUser().length()<6 || personaDTO.getUser().length()>10){
+        if(personaDTO.user()!=null){
+            if(personaDTO.user().length()<6 || personaDTO.user().length()>10){
                 throw new Exception("User debe estar entre 6 y 10 caracteres");
             } else {
                 PersonaJVA2 persona = new PersonaJVA2(personaDTO);//Convierto InputDTO en Entity con el constructor de Entity

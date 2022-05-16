@@ -3,8 +3,9 @@ package com.ejercicios.JVA2.infrastructure.controllers.dto.output;
 import com.ejercicios.JVA2.domain.entities.PersonaJVA2;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
+//El output no lo hago de tipo record porque necesito el constructor
 //Los DTO no hacerlos serializables
 @Data
 public class PersonaOutputDTOJVA2 {
@@ -18,9 +19,9 @@ public class PersonaOutputDTOJVA2 {
     private String personalEmail;
     private String city;
     private Boolean active;
-    private Date date;
+    private LocalDate date;
     private String imageUrl;
-    private Date termination_date;
+    private LocalDate termination_date;
 
     public PersonaOutputDTOJVA2(PersonaJVA2 personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
         id=(personaEntity.getId());

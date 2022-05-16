@@ -10,7 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDate;
 
 //Hacer las entidades serializables
 @Entity
@@ -59,25 +59,25 @@ public class PersonaJVA2 {
 
     @NotNull
     @Column(name = "date")
-    Date date;
+    LocalDate date;
 
     @Column(name = "imaage_url")
     String imageUrl;
     @Column(name = "terminationDate")
-    Date terminationDate;
+    LocalDate terminationDate;
 
-    public PersonaJVA2(PersonaInputDTOJVA2 personaDTO){//Creo un costructor que recibe personaDTO
-        //Como id es autoincrementable no pongo ningun set para el ya que se añadirá solo
-        city=personaDTO.getCity();
-        active=personaDTO.getActive();
-        companyEmail =personaDTO.getCompanyEmail();
-        imageUrl =personaDTO.getImageUrl();
-        name=personaDTO.getName();
-        password=personaDTO.getPassword();
-        date=personaDTO.getDate();
-        personalEmail =personaDTO.getPersonalEmail();
-        surname=personaDTO.getSurname();
-        terminationDate =personaDTO.getTermination_date();
-        user= personaDTO.getUser();
+    public PersonaJVA2(PersonaInputDTOJVA2 personaDTO){
+        //Al ser InputDTO una clase de tipo recod no hay get/set, tienen el propio nombre de la variable como metodo get
+        city=personaDTO.city();
+        active=personaDTO.active();
+        companyEmail =personaDTO.companyEmail();
+        imageUrl =personaDTO.imageUrl();
+        name=personaDTO.name();
+        password=personaDTO.password();
+        date=personaDTO.date();
+        personalEmail =personaDTO.personalEmail();
+        surname=personaDTO.surname();
+        terminationDate =personaDTO.termination_date();
+        user= personaDTO.user();
     }
 }
