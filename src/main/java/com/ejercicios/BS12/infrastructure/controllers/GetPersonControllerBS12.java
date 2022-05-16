@@ -17,7 +17,7 @@ public class GetPersonControllerBS12 {
     GetPersonServiceBS12 getPersonService;
 
     @GetMapping("/getall")
-    @CrossOrigin("*")
+    @CrossOrigin(origins = "*")
     public List<PersonOutputDTOBS12> getPersons(){
         return getPersonService.getAllPerson();
     }
