@@ -63,7 +63,7 @@ public class Persona {
 
     @Column(name = "imaage_url")
     String imageUrl;
-    @Column(name = "terminationDate")
+    @Column(name = "creationDate")
     Date terminationDate;
 
     public Persona(PersonaInputDTO personaDTO){//Creo un costructor que recibe personaDTO

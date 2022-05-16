@@ -49,7 +49,7 @@ public class Person implements Serializable {
     @Column(name = "imagen_url")
     String imageUrl;
 
-    @Column(name = "termination_date")
+    @Column(name = "creationDate")
     LocalDate terminationDate;
 
     @Column(name = "id_student")

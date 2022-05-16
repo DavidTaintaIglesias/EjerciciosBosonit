@@ -10,5 +10,5 @@ public interface PersonaRepositoryDBA1 extends JpaRepository<PersonaDBA1, Intege
 
     PersonaDBA1 findByUser(String user);
 
-    //public List<PersonaDBA1> getData(HashMap<String, Object> conditions);
+    //public List<PersonaDBA1> getData(HashMap<String, Object> Conditions);
 }

@@ -3,7 +3,8 @@ package com.ejercicios.BS9.infrastructure.controllers;
 import com.ejercicios.BS9.aplication.services.GetUserService;
 import com.ejercicios.BS9.infrastructure.controllers.dto.output.ClientOutputDTO;
 import com.ejercicios.BS9.infrastructure.controllers.dto.output.UserOutputDTO;
-import com.ejercicios.BS9.infrastructure.feign.IFeignClient;
+//import com.ejercicios.BS9.infrastructure.feign.IFeignClient;
+//Version de feign no compatible con 2.5.4 para Springboot, conflicto con swagger
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +22,8 @@ public class GetUserController {
     @Autowired
     GetUserService getUserService;
 
-    @Autowired
-    IFeignClient iFeignClient;
+    /*@Autowired
+    IFeignClient iFeignClient;*/
     //Instanciar la interfaz
 
     @GetMapping("/all")
@@ -45,7 +46,7 @@ public class GetUserController {
         return respuesta.getBody();
     }
 
-    //Uso de Feign
+    /*//Uso de Feign
     @GetMapping("/client/feign/{id}")
     public ClientOutputDTO getClientByFeign(@PathVariable int id){
         System.out.println("Feign: Pido en User el cliente "+id);
@@ -53,5 +54,5 @@ public class GetUserController {
         //con este código en esta url en la que estoy llamando a la interfaz hago que iFeignClient llame a la url de la interfaz
         System.out.println("Feign: Ya me han devuelto en User el cliente "+id);
         return respuesta;
-    }
+    }*/
 }

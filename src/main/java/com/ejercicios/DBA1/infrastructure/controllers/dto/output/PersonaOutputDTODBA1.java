@@ -24,7 +24,7 @@ public class PersonaOutputDTODBA1 {
     private Boolean active;
     private LocalDate date;
     private String imageUrl;
-    private LocalDate termination_date;
+    private LocalDate creationDate;
 
     public PersonaOutputDTODBA1(PersonaDBA1 personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
         id=(personaEntity.getId());
@@ -38,6 +38,6 @@ public class PersonaOutputDTODBA1 {
         active=(personaEntity.getActive());
         date=(personaEntity.getDate());
         imageUrl=(personaEntity.getImageUrl());
-        termination_date=(personaEntity.getTerminationDate());
+        creationDate =(personaEntity.getCreationDate());
     }
 }

@@ -63,7 +63,7 @@ public class PersonaJVA2 {
 
     @Column(name = "imaage_url")
     String imageUrl;
-    @Column(name = "terminationDate")
+    @Column(name = "creationDate")
     LocalDate terminationDate;
 
     public PersonaJVA2(PersonaInputDTOJVA2 personaDTO){

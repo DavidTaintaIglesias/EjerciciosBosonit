@@ -63,8 +63,8 @@ public class PersonaDBA1 {
 
     @Column(name = "imaage_url")
     String imageUrl;
-    @Column(name = "terminationDate")
-    LocalDate terminationDate;
+    @Column(name = "creation_date")
+    LocalDate creationDate;
 
     public PersonaDBA1(PersonaInputDTODBA1 personaDTO){
         //Al ser InputDTO una clase de tipo recod no hay get/set, tienen el propio nombre de la variable como metodo get
@@ -77,7 +77,7 @@ public class PersonaDBA1 {
         date=personaDTO.date();
         personalEmail =personaDTO.personalEmail();
         surname=personaDTO.surname();
-        terminationDate =personaDTO.termination_date();
+        creationDate =personaDTO.creationDate();
         user= personaDTO.user();
     }
 }

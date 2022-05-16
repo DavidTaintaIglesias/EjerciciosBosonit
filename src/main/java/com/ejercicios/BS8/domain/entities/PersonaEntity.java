@@ -63,7 +63,7 @@ public class PersonaEntity implements Serializable {
 
     @Column(name = "imageUrl")
     String imageUrl;
-    @Column(name = "terminationDate")
+    @Column(name = "creationDate")
     Date terminationDate;
 
     public PersonaEntity(PersonaInputDTO personaDTO){//Creo un costructor que recibe personaDTO

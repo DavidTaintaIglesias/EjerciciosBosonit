@@ -13,8 +13,8 @@ public class SwaggerConfigurer {
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.any())//ver todas las Etiquetas Api
+                .paths(PathSelectors.any()) //ver todas las rutas
                 .build();
     }
 

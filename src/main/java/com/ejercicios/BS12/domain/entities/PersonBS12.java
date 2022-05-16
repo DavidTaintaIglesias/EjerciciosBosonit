@@ -49,7 +49,7 @@ public class PersonBS12 implements Serializable {
     @Column(name = "imagen_url")
     String image_url;
 
-    @Column(name = "termination_date")
+    @Column(name = "creationDate")
     LocalDate termination_date;
 
     public PersonBS12(PersonInputDTOBS12 personInputDTO){

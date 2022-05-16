@@ -7,6 +7,7 @@ import com.ejercicios.DBA1.infrastructure.repository.PersonaRepositoryDBA1;
 import com.ejercicios.shared.exceptions.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;

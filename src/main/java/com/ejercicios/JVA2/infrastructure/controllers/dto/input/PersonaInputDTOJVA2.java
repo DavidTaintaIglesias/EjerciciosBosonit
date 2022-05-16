@@ -33,7 +33,7 @@ public class PersonaInputDTOJVA2 {
     private Boolean active;
     private Date date;
     private String imageUrl;
-    private Date termination_date;
+    private Date creationDate;
 
 
 }*/
