@@ -1,6 +1,6 @@
-package com.ejercicios.JVA2.infrastructure.controllers.dto.output;
+package com.ejercicios.DBA1.infrastructure.controllers.dto.output;
 
-import com.ejercicios.JVA2.domain.entities.PersonaJVA2;
+import com.ejercicios.DBA1.domain.entities.PersonaDBA1;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 //Los DTO no hacerlos serializables
 @Data
-public class PersonaOutputDTOJVA2 {
+public class PersonaOutputDTODBA1 {
 
     private int id;
     private String user;
@@ -26,7 +26,7 @@ public class PersonaOutputDTOJVA2 {
     private String imageUrl;
     private LocalDate termination_date;
 
-    public PersonaOutputDTOJVA2(PersonaJVA2 personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
+    public PersonaOutputDTODBA1(PersonaDBA1 personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
         id=(personaEntity.getId());
         user=(personaEntity.getUser());
         password=(personaEntity.getPassword());
