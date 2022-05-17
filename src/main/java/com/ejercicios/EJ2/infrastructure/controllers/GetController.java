@@ -2,6 +2,7 @@ package com.ejercicios.EJ2.infrastructure.controllers;
 
 import com.ejercicios.EJ2.application.PersonaService;
 import com.ejercicios.EJ2.infrastructure.controllers.dto.output.PersonaOutputDTO;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
+@Api(tags = "EJ2")
 @RestController
 @RequestMapping("/EJ2")
 public class GetController {

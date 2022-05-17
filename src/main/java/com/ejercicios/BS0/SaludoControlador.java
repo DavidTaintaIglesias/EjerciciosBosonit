@@ -1,7 +1,9 @@
 package com.ejercicios.BS0;
 
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
+@Api(tags = "BS0")
 @RestController
 @RequestMapping("/BS0")
 public class SaludoControlador {

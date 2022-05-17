@@ -5,6 +5,7 @@ import com.ejercicios.BS9.infrastructure.controllers.dto.output.ClientOutputDTO;
 import com.ejercicios.BS9.infrastructure.controllers.dto.output.UserOutputDTO;
 //import com.ejercicios.BS9.infrastructure.feign.IFeignClient;
 //Version de feign no compatible con 2.5.4 para Springboot, conflicto con swagger
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+@Api(tags = "BS9")
 @RestController
 @RequestMapping("/BS9/getuser")
 public class GetUserController {

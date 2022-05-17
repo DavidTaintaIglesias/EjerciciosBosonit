@@ -3,11 +3,13 @@ package com.ejercicios.BS9.infrastructure.controllers;
 import com.ejercicios.BS9.aplication.services.GetClientService;
 import com.ejercicios.BS9.infrastructure.controllers.dto.output.ClientOutputDTO;
 import com.ejercicios.shared.exceptions.Unprocessable;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(tags = "BS9")
 @RestController
 @RequestMapping("/BS9/getclient")
 public class GetClientController {
@@ -27,6 +29,6 @@ public class GetClientController {
             return getClientService.getById(id);
         } else if(outputType.equals("full")){
             return getClientService.getFullById(id);
-        } else return new Unprocessable("outputType debe ser 'simple' o 'full");
+        } else throw new Unprocessable("outputType debe ser 'simple' o 'full");
     }
 }

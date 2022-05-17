@@ -2,9 +2,11 @@ package com.ejercicios.EJ31.infrastructure.controllers;
 
 import com.ejercicios.EJ31.application.exceptions.UnprocessableException;
 import com.ejercicios.EJ31.application.services.SubjetsStudentService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@Api(tags = "EJ31")
 @RestController
 @RequestMapping("/EJ31")
 public class SubjetStudentController {

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 
+@Api(tags = "DBA1")
 @RestController
 @RequestMapping("/DBA1")
 public class SearchController {

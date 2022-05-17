@@ -3,10 +3,12 @@ package com.ejercicios.JVA2.infrastructure.controllers;
 import com.ejercicios.JVA2.application.services.PersonaServiceJVA2;
 import com.ejercicios.JVA2.infrastructure.controllers.dto.input.PersonaInputDTOJVA2;
 import com.ejercicios.JVA2.infrastructure.controllers.dto.output.PersonaOutputDTOJVA2;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.web.bind.annotation.*;
 
+@Api(tags = "JVA2")
 @RestController
 @RequestMapping("/JVA2")
 public class PutControllerJVA2 {

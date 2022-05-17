@@ -3,6 +3,7 @@ package com.ejercicios.BS12.infrastructure.controllers;
 import com.ejercicios.BS12.application.service.PostPersonServiceBS12;
 import com.ejercicios.BS12.infrastructure.controllers.dto.input.PersonInputDTOBS12;
 import com.ejercicios.BS12.infrastructure.controllers.dto.output.PersonOutputDTOBS12;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+@Api(tags = "BS12")
 @RestController
 public class PostPersonControllerBS12 {
 

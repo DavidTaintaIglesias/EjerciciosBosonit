@@ -1,11 +1,13 @@
 package com.ejercicios.BS4.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(tags = "BS4")
 @RestController
 @RequestMapping("/BS4")
 @PropertySource("application_BS4.properties")

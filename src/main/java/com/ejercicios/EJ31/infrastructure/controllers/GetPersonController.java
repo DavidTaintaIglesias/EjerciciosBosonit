@@ -2,6 +2,7 @@ package com.ejercicios.EJ31.infrastructure.controllers;
 
 import com.ejercicios.EJ31.application.services.GetPersonService;
 import com.ejercicios.EJ31.infrastructure.controllers.dto.output.PersonOutputDTO;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Api(tags = "EJ31")
 @RestController
 @RequestMapping("/EJ31/getPerson")
 public class GetPersonController {

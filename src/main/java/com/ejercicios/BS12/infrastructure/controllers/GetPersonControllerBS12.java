@@ -2,6 +2,7 @@ package com.ejercicios.BS12.infrastructure.controllers;
 
 import com.ejercicios.BS12.application.service.GetPersonServiceBS12;
 import com.ejercicios.BS12.infrastructure.controllers.dto.output.PersonOutputDTOBS12;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Api(tags = "BS12")
 @RestController
 public class GetPersonControllerBS12 {
 

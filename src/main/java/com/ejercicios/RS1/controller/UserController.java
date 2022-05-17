@@ -2,9 +2,11 @@ package com.ejercicios.RS1.controller;
 
 import com.ejercicios.RS1.model.User;
 import com.ejercicios.RS1.service.UserService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@Api(tags = "RS1")
 @RestController
 @RequestMapping("/RS1/user")
 public class UserController {
