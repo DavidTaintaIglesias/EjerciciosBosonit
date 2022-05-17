@@ -5,6 +5,8 @@ import com.ejercicios.DBA1.infrastructure.controllers.dto.input.PersonaInputDTOD
 import com.ejercicios.DBA1.infrastructure.controllers.dto.output.PersonaOutputDTODBA1;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,7 @@ public class PostControllerDBA1 {
 
     //Añadir persona
     @PostMapping("/postperson")// simbolo "|" -> alt+124
-    public PersonaOutputDTODBA1 setPersona(@RequestBody PersonaInputDTODBA1 persona) throws Exception{
-        return new PersonaOutputDTODBA1(personaService.setPersona(persona));
+    public ResponseEntity<PersonaOutputDTODBA1> setPersona(@RequestBody PersonaInputDTODBA1 persona) throws Exception{
+        return new ResponseEntity<>(new PersonaOutputDTODBA1(personaService.setPersona(persona)), HttpStatus.CREATED);
     }
 }

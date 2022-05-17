@@ -6,6 +6,8 @@ import com.ejercicios.DBA1.infrastructure.controllers.dto.output.PersonaOutputDT
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Api(tags = "DBA1")
@@ -18,7 +20,7 @@ public class PutControllerDBA1 {
 
     //Modificar por id (problemas con el autoincrement)
     @PutMapping("/put/{id}")
-    public PersonaOutputDTODBA1 putById(@PathVariable int id, @RequestBody PersonaInputDTODBA1 personaInputDTO) throws EmptyResultDataAccessException {
-        return personaService.putById(id, personaInputDTO);
+    public ResponseEntity<PersonaOutputDTODBA1> putById(@PathVariable int id, @RequestBody PersonaInputDTODBA1 personaInputDTO) throws EmptyResultDataAccessException {
+        return new ResponseEntity<>(new PersonaOutputDTODBA1(personaService.putById(id, personaInputDTO)), HttpStatus.CREATED);
     }
 }

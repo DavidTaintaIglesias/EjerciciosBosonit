@@ -46,18 +46,16 @@ public class PersonaServiceDBA1 implements Serializable {
     }
 
     //Modificar por id
-    public PersonaOutputDTODBA1 putById(int id, PersonaInputDTODBA1 personaInputDTO) throws EmptyResultDataAccessException{
+    public PersonaDBA1 putById(int id, PersonaInputDTODBA1 personaInputDTO) throws EmptyResultDataAccessException{
         try{
             personaRepository.deleteById(id);
             PersonaDBA1 personaEntity = new PersonaDBA1(personaInputDTO);
             personaRepository.save(personaEntity);
-            PersonaOutputDTODBA1 personaOutputDTO = new PersonaOutputDTODBA1(personaEntity);
-            return personaOutputDTO;
+            return personaEntity;
         } catch (EmptyResultDataAccessException e){
             PersonaDBA1 personaEntity = new PersonaDBA1(personaInputDTO);
             personaRepository.save(personaEntity);
-            PersonaOutputDTODBA1 personaOutputDTO = new PersonaOutputDTODBA1(personaEntity);
-            return personaOutputDTO;
+            return personaEntity;
         }
     }
 
