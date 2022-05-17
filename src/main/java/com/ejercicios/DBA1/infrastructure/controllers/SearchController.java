@@ -1,7 +1,8 @@
-/*package com.ejercicios.DBA1.infrastructure.controllers;
+package com.ejercicios.DBA1.infrastructure.controllers;
 
 import com.ejercicios.DBA1.infrastructure.controllers.dto.output.PersonaOutputDTODBA1;
 import com.ejercicios.DBA1.infrastructure.repository.PersonaRespositoryDBA1Impl;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ import java.util.List;
 public class SearchController {
 
     @Autowired
-    PersonaRespositoryDBA1Impl personaRespositoryDBA1;
+    PersonaRespositoryDBA1Impl personaRespositoryDBA1Impl;
 
     @GetMapping
     public ResponseEntity<List<PersonaOutputDTODBA1>> searchPerson(@RequestParam(required = false) String name, @RequestParam(required = false) String surname, @RequestParam(required = false) String user){
@@ -24,6 +25,6 @@ public class SearchController {
         hm.put("name", name);
         hm.put("surname", surname);
         hm.put("user", user);
-        return new ResponseEntity<>(personaRespositoryDBA1.getData(hm).stream().map(PersonaOutputDTODBA1::new).toList(), HttpStatus.OK);
+        return new ResponseEntity<>(personaRespositoryDBA1Impl.getData(hm).stream().map(PersonaOutputDTODBA1::new).toList(), HttpStatus.OK);
     }
-}*/
+}

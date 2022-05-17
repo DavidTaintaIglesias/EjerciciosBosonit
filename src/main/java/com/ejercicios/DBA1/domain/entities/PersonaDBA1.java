@@ -6,14 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 //Hacer las entidades serializables
 @Entity
+@Table(name = "personDBA1")
 @Component //Para poder hacer el @Autowired
 @Data
 @NoArgsConstructor
@@ -61,7 +59,7 @@ public class PersonaDBA1 {
     @Column(name = "date")
     LocalDate date;
 
-    @Column(name = "imaage_url")
+    @Column(name = "image_url")
     String imageUrl;
     @Column(name = "creation_date")
     LocalDate creationDate;
