@@ -5,6 +5,7 @@ import com.ejercicios.EJ2.infrastructure.controllers.dto.input.PersonaInputDTO;
 import com.ejercicios.EJ2.infrastructure.controllers.dto.output.PersonaOutputDTO;
 import com.ejercicios.EJ2.infrastructure.repositories.PersonaRepository;
 import com.ejercicios.shared.exceptions.NotFound;
+import com.ejercicios.shared.exceptions.Unprocessable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -50,18 +51,6 @@ public class PersonaService implements Serializable {
         return listaPersonasDTO;
     }
 
-    /*//Buscar by User sin usar findByUser
-    public ArrayList<PersonaOutputDTO> getByUser(String user){
-        ArrayList<PersonaOutputDTO> listaPersonasDTO = new ArrayList<PersonaOutputDTO>();
-        for(int i =1; i<=personaRepository.count();i++){
-            PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.getById(i));
-            if(personaOutputDTO.getUser().equals(user)){
-                listaPersonasDTO.add(personaOutputDTO);
-            }
-        }
-        return listaPersonasDTO;
-    }*/
-
     //Borrar por id
     public String deleteById(int id) throws EmptyResultDataAccessException {
         try{
@@ -92,16 +81,15 @@ public class PersonaService implements Serializable {
     public PersonaOutputDTO setPersona(PersonaInputDTO personaDTO) throws Exception{
         if(personaDTO.getUser()!=null){
             if(personaDTO.getUser().length()<6 || personaDTO.getUser().length()>10){
-                throw new Exception("User debe estar entre 6 y 10 caracteres");
+                throw new Unprocessable("User debe estar entre 6 y 10 caracteres");
             } else {
                 Persona personaEntity = new Persona(personaDTO);//Convierto InputDTO en Entity con el constructor de Entity
                 personaRepository.save(personaEntity);//Almaceno Entity en mi repositorio
                 PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);//Convierto Entity en OutputDTO con el constructor de DTO
-                System.out.println("Persona añadida");
                 return personaOutputDTO;
             }
         } else {
-            throw new Exception("User no puede estar vacio");
+            throw new Unprocessable("User no puede estar vacio");
         }
     }
 
