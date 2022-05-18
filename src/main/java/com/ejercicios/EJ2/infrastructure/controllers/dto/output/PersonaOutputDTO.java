@@ -3,7 +3,7 @@ package com.ejercicios.EJ2.infrastructure.controllers.dto.output;
 import com.ejercicios.EJ2.domain.Persona;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 //Los DTO no hacerlos serializables
 @Data
@@ -18,9 +18,9 @@ public class PersonaOutputDTO {
     private String personalEmail;
     private String city;
     private Boolean active;
-    private Date date;
+    private LocalDate date;
     private String imageUrl;
-    private Date termination_date;
+    private LocalDate termination_date;
 
     public PersonaOutputDTO (Persona personaEntity){//Constructos que recibe entity y lo convierte en outputDTO
         id=(personaEntity.getId());

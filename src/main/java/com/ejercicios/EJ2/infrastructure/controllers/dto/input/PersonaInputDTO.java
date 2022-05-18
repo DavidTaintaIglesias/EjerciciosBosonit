@@ -2,7 +2,7 @@ package com.ejercicios.EJ2.infrastructure.controllers.dto.input;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class PersonaInputDTO {
@@ -16,9 +16,9 @@ public class PersonaInputDTO {
     private String personalEmail;
     private String city;
     private Boolean active;
-    private Date date;
+    private LocalDate date;
     private String imageUrl;
-    private Date termination_date;
+    private LocalDate termination_date;
 
 
 }

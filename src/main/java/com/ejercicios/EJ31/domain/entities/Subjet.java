@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Subjet implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id_subjet")
     Integer id;
 

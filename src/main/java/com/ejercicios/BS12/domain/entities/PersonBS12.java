@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class PersonBS12 implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id_person")
     Integer id;
 

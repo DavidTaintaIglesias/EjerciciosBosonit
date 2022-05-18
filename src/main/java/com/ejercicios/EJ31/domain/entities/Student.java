@@ -15,7 +15,7 @@ import java.util.List;
 public class Student implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id_student")
     Integer id;
 

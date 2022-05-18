@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Api(tags = "EJ2")
 @RestController
@@ -21,7 +22,7 @@ public class GetController {
 
     //Ver todos los valores
     @GetMapping("/getall")
-    public ArrayList<PersonaOutputDTO> getPersonas(){
+    public List<PersonaOutputDTO> getPersonas(){
         return personaService.getAll();
     }
 

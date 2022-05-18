@@ -4,12 +4,17 @@ import com.ejercicios.EJ2.domain.Persona;
 import com.ejercicios.EJ2.infrastructure.controllers.dto.input.PersonaInputDTO;
 import com.ejercicios.EJ2.infrastructure.controllers.dto.output.PersonaOutputDTO;
 import com.ejercicios.EJ2.infrastructure.repositories.PersonaRepository;
+import com.ejercicios.shared.exceptions.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class PersonaService implements Serializable {
@@ -20,13 +25,9 @@ public class PersonaService implements Serializable {
 
 
     //Recibir todos las persona de mi BBDD
-    public ArrayList<PersonaOutputDTO> getAll() {
-        ArrayList<PersonaOutputDTO> lista= new ArrayList<PersonaOutputDTO>();
-        for (int i =1; i<=personaRepository.count();i++){
-            PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaRepository.getById(i));
-            lista.add(personaOutputDTO);
-        }
-        return lista;
+    public List<PersonaOutputDTO> getAll() {
+        List<Persona> personas = personaRepository.findAll();
+        return personas.stream().map(PersonaOutputDTO::new).toList();
 
     }
 
@@ -102,5 +103,18 @@ public class PersonaService implements Serializable {
         } else {
             throw new Exception("User no puede estar vacio");
         }
+    }
+
+    //Modificar algunos campos
+    public Persona patchPersona(Integer id, Map<Object, Object> personaInputDTO) {
+
+        Persona p = personaRepository.findById(id).orElseThrow(()-> new NotFound("Id not found"));
+
+        personaInputDTO.forEach((k,v)->{
+            Field field = ReflectionUtils.findField(Persona.class, (String) k);
+            field.setAccessible(true);
+            ReflectionUtils.setField(field, p, v);
+        });
+        return personaRepository.save(p);
     }
 }

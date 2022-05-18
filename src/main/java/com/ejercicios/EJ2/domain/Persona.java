@@ -6,11 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 //Hacer las entidades serializables
 @Entity
@@ -20,7 +17,7 @@ import java.util.Date;
 public class Persona {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "PersonId")
     Integer id;
 
@@ -59,12 +56,12 @@ public class Persona {
 
     @NotNull
     @Column(name = "date")
-    Date date;
+    LocalDate date;
 
     @Column(name = "imaage_url")
     String imageUrl;
     @Column(name = "creationDate")
-    Date terminationDate;
+    LocalDate terminationDate;
 
     public Persona(PersonaInputDTO personaDTO){//Creo un costructor que recibe personaDTO
         //Como id es autoincrementable no pongo ningun set para el ya que se añadirá solo
