@@ -20,11 +20,22 @@ public class SearchController {
     PersonaRespositoryDBA1Impl personaRespositoryDBA1Impl;
 
     @GetMapping
-    public ResponseEntity<List<PersonaOutputDTODBA1>> searchPerson(@RequestParam(required = false) String name, @RequestParam(required = false) String surname, @RequestParam(required = false) String user){
+    public ResponseEntity<List<PersonaOutputDTODBA1>> serchPerson(@RequestParam(required = false) String name, @RequestParam(required = false) String surname, @RequestParam(required = false) String user){
+
         HashMap<String, Object> hm = new HashMap<>();
-        hm.put("name", name);
-        hm.put("surname", surname);
-        hm.put("user", user);
+
+        if(name!=null){
+
+            hm.put("name", name);
+        }
+        if(surname!=null){
+
+            hm.put("surname", surname);
+        }
+        if(user!=null){
+
+            hm.put("user", user);
+        }
         return new ResponseEntity<>(personaRespositoryDBA1Impl.getData(hm).stream().map(PersonaOutputDTODBA1::new).toList(), HttpStatus.OK);
     }
 }
