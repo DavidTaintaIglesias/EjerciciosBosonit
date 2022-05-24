@@ -44,4 +44,7 @@ public class PersonInputDTOEJS31 {
     private String imageUrl;
 
     private LocalDate terminationDate;
+
+    @NotNull(message = "admin cannot be null")
+    private boolean admin;
 }

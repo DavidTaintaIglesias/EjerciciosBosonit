@@ -60,6 +60,9 @@ public class PersonEJS31 implements Serializable {
     @Column(name = "id_profesor")
     Integer idProffesor;
 
+    @Column(name = "admin")
+    boolean admin;
+
     public PersonEJS31(PersonInputDTOEJS31 personInputDTO){
         setUser(personInputDTO.getUser());
         setPassword(personInputDTO.getPassword());
@@ -72,5 +75,6 @@ public class PersonEJS31 implements Serializable {
         setCreatedDate(personInputDTO.getCreatedDate());
         setImageUrl(personInputDTO.getImageUrl());
         setTerminationDate(personInputDTO.getTerminationDate());
+        setAdmin(personInputDTO.isAdmin());
     }
 }

@@ -19,6 +19,7 @@ public class PersonOutputDTOEJS31 {
     private LocalDate createdDate;
     private String imageUrl;
     private LocalDate terminationDate;
+    private boolean admin;
 
     public PersonOutputDTOEJS31(PersonEJS31 person){
         setId(person.getId());
@@ -32,5 +33,6 @@ public class PersonOutputDTOEJS31 {
         setCreatedDate(person.getCreatedDate());
         setImageUrl(person.getImageUrl());
         setTerminationDate(person.getTerminationDate());
+        setAdmin(person.isAdmin());
     }
 }
