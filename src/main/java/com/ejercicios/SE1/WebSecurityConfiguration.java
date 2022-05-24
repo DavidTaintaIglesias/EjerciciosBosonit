@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -34,12 +33,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public UserDetailsService userDetailsService() {
 
-        UserDetails user=User.builder().username("user").password(passwordEncoder().encode("secret")).
+        UserDetails user=User.builder().username("user").password(passwordEncoder().encode("password")).
                 roles("USER").build();
-        UserDetails userAdmin=User.builder().username("admin").password(passwordEncoder().encode("secret")).
+        UserDetails userAdmin=User.builder().username("admin").password(passwordEncoder().encode("password")).
                 roles("ADMIN").build();
         return new InMemoryUserDetailsManager(user,userAdmin);
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new  BCryptPasswordEncoder();
