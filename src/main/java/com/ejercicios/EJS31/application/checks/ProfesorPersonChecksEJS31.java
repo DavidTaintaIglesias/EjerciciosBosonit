@@ -24,7 +24,7 @@ public class ProfesorPersonChecksEJS31 {
 
     public void validProfesor(int id){
         PersonEJS31 person = personRepository.getById(id);
-        if(person.getIdProfesor()!=null){
+        if(person.getIdProffesor()!=null){
             throw new Unprocessable("This Person is already a profesor");
         }
         if(person.getIdStudent()!=null){
@@ -37,7 +37,7 @@ public class ProfesorPersonChecksEJS31 {
         ProfesorEJS31 profesor = profesorRepository.getById(idProfesor);
         profesor.setPerson(person);
         profesorRepository.save(profesor);
-        person.setIdProfesor(profesor.getId());
+        person.setIdProffesor(profesor.getId());
         personRepository.save(person);
     }
 }

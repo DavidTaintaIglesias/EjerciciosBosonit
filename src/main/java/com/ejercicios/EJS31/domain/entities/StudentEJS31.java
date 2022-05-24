@@ -9,13 +9,13 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "students")
+@Table(name = "studentsEJS31")
 @Data
 @NoArgsConstructor
 public class StudentEJS31 implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_student")
     Integer id;
 

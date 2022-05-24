@@ -1,21 +1,23 @@
 package com.ejercicios.EJS31.domain.entities;
 
 import com.ejercicios.EJS31.infrastructure.controllers.dto.input.PersonInputDTOEJS31;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Persons")
-@Data
+@Table(name = "PersonsEJS31")
+@Getter
+@Setter
 @NoArgsConstructor
 public class PersonEJS31 implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_person")
     Integer id;
 
@@ -56,7 +58,7 @@ public class PersonEJS31 implements Serializable {
     Integer idStudent;
 
     @Column(name = "id_profesor")
-    Integer idProfesor;
+    Integer idProffesor;
 
     public PersonEJS31(PersonInputDTOEJS31 personInputDTO){
         setUser(personInputDTO.getUser());

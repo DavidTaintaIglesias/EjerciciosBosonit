@@ -27,7 +27,7 @@ public class StudentPersonChecksEJS31 {
         if(person.getIdStudent()!=null){
             throw  new Unprocessable("This Person is already a Student");
         }
-        if(person.getIdProfesor()!=null){
+        if(person.getIdProffesor()!=null){
             throw new Unprocessable("This person is already a Profesor");
         }
     }

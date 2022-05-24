@@ -5,6 +5,8 @@ import com.ejercicios.EJS31.infrastructure.controllers.dto.input.StudentInputDTO
 import com.ejercicios.EJS31.infrastructure.controllers.dto.output.StudentOutputDTOEJS31;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,7 @@ public class PostStudentControllerEJS31 {
     PostStudentServiceEJS31 postStudentService;
 
     @PostMapping("/postStudent")
-    public StudentOutputDTOEJS31 postStudent(@Valid @RequestBody StudentInputDTOEJS31 studentInputDTO){
-        return postStudentService.postStudent(studentInputDTO);
+    public ResponseEntity<StudentOutputDTOEJS31> postStudent(@Valid @RequestBody StudentInputDTOEJS31 studentInputDTO){
+        return new ResponseEntity<>(new StudentOutputDTOEJS31(postStudentService.postStudent(studentInputDTO)), HttpStatus.CREATED);
     }
 }

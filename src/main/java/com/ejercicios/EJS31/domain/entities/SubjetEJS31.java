@@ -9,13 +9,13 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "subjets")
+@Table(name = "subjetsEJS31")
 @Data
 @NoArgsConstructor
 public class SubjetEJS31 implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_subjet")
     Integer id;
 

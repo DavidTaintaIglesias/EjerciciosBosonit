@@ -4,6 +4,8 @@ import com.ejercicios.EJS31.application.services.GetPersonServiceEJS31;
 import com.ejercicios.EJS31.infrastructure.controllers.dto.output.PersonOutputDTOEJS31;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,17 +22,17 @@ public class GetPersonControllerEJS31 {
     GetPersonServiceEJS31 getPersonService;
 
     @GetMapping("/all")
-    public List<PersonOutputDTOEJS31> getPersons(){
-        return getPersonService.getAllPerson();
+    public ResponseEntity<List<PersonOutputDTOEJS31>> getPersons(){
+        return new ResponseEntity<>(getPersonService.getAllPerson().stream().map(PersonOutputDTOEJS31::new).toList(), HttpStatus.OK);
     }
 
     @GetMapping("/byId/{id}")
-    public PersonOutputDTOEJS31 getById(@PathVariable int id){
-        return getPersonService.getPersonById(id);
+    public ResponseEntity<PersonOutputDTOEJS31> getById(@PathVariable int id){
+        return new ResponseEntity<>(new PersonOutputDTOEJS31(getPersonService.getPersonById(id)), HttpStatus.OK);
     }
 
     @GetMapping("/byUser/{user}")
-    public PersonOutputDTOEJS31 getByUser (@PathVariable String user){
-        return getPersonService.getPersonByUser(user);
+    public ResponseEntity<PersonOutputDTOEJS31> getByUser (@PathVariable String user){
+        return new ResponseEntity<>(new PersonOutputDTOEJS31(getPersonService.getPersonByUser(user)), HttpStatus.OK);
     }
 }

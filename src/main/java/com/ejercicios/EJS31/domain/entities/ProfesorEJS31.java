@@ -5,15 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "profesors")
+@Table(name = "profesorsEJS31")
 @Data
 @NoArgsConstructor
-public class ProfesorEJS31 {
+public class ProfesorEJS31 implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_profesor")
     Integer id;
 
