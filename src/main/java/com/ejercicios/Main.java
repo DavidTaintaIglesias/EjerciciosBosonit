@@ -22,6 +22,7 @@ public class Main extends WebSecurityConfigurerAdapter {
 		SpringApplication.run(Main.class, args);
 	}
 
+	//Asignacion de permisos a los roles
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http

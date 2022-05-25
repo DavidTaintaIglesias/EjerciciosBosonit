@@ -17,7 +17,7 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-
+    //Endpoint para el login
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestParam("user") String user, @RequestParam("password") String password){
         return new ResponseEntity<>(loginService.getLogin(user, password), HttpStatus.OK);

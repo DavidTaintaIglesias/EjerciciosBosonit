@@ -21,6 +21,7 @@ public class LoginService {
     @Autowired
     PersonRepositoryEJS31 personRepository;
 
+    //Verificaciones para el login
     public String getLogin(String user, String pass){
 
         PersonEJS31 person = personRepository.findByUser(user).orElseThrow(()-> new NotFound("User not found"));
@@ -39,6 +40,7 @@ public class LoginService {
         return getJWTToken(user, rol);
     }
 
+    //Generacion del token
     private String getJWTToken(String user, String rol) {
         String secretKey = "mySecretKey";
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils
