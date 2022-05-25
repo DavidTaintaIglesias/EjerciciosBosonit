@@ -1,0 +1,12 @@
+message:
+  topic:
+    name: "topic1"
+    name2: "topic2"
+  group:
+    name: "group"
+
+spring:
+  kafka:
+    bootstrap-servers: 9092
+    consumer:
+      group-id: myGroup
