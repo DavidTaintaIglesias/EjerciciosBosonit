@@ -2,10 +2,14 @@ package com.ejercicios.JVA2.infrastructure.controllers.dto.input;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public record PersonaInputDTOJVA2(
+
+        @NotNull
         String user,
+
         String password,
         String name,
         String surname,
@@ -16,7 +20,7 @@ public record PersonaInputDTOJVA2(
         LocalDate date,
         String imageUrl,
         LocalDate termination_date
-) {
+        ){
 }
 
 /*@Data
