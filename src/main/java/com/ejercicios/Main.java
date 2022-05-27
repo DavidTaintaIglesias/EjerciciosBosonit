@@ -31,7 +31,8 @@ public class Main extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers("/EJS31/login").permitAll()
 				.antMatchers(HttpMethod.GET).permitAll()
-				.antMatchers(HttpMethod.POST).hasRole("ADMIN")//IMPORTANTE!! Nombre del rol sin ROLE_
+				.antMatchers(HttpMethod.POST).permitAll()
+//				.antMatchers(HttpMethod.POST).hasRole("ADMIN")//IMPORTANTE!! Nombre del rol sin ROLE_
 				.anyRequest().authenticated();
 	}
 }
