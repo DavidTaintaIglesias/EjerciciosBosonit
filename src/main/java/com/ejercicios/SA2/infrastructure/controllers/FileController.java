@@ -6,7 +6,6 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 
@@ -18,15 +17,24 @@ public class FileController {
     @Autowired
     FileService fileService;
 
-    @GetMapping("/")
-    public String index(){
+    @GetMapping("/setpath")
+    public String setPath(@RequestParam String path){
 
-        return "upload";
+        fileService.setPath(path);
+
+        return "redirect:/setPath: " + path;
     }
 
     @PostMapping("/uploadFile")
     public FilesEntity uploadFile(@RequestParam("file")MultipartFile file) throws IOException {
 
         return fileService.uploadFile(file);
+    }
+
+    @GetMapping("/downloadFile/byName")
+    public String downloadFile(@RequestParam String name) throws Exception {
+
+        fileService.downloadByName(name);
+        return "file downloaded";
     }
 }

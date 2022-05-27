@@ -1,6 +1,5 @@
 package com.ejercicios.SA2.domain.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -22,17 +22,22 @@ public class FilesEntity implements Serializable {
     @Column(name = "id")
     Integer id;
 
+    @Column(name = "metadata")
+    String metadata;
+
     @Column(name = "name")
     String name;
 
     @Column(name = "date")
-    LocalDate date;
+    LocalDateTime date;
 
-    @Column(name = "metadata")
-    String metadata;
+    @Column(name = "directory")
+    String dir;
 
-    public FilesEntity(String name, LocalDate date){
+    public FilesEntity(String name, LocalDateTime date, String dir, String metadata){
         this.name = name;
         this.date = date;
+        this.dir = dir;
+        this.metadata = metadata;
     }
 }

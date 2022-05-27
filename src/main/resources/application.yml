@@ -26,4 +26,5 @@ spring:
 
 
 # Directorio ejercicio SA2
-uploadDir: C:\Users\david.tainta\IdeaProjects\ejerciciosBosonit\src\main\resources\templates
+uploadDir: C:/Users/david.tainta/IdeaProjects/ejerciciosBosonit/src/main/resources/templates
+downloadDir: C:/Users/david.tainta/Downloads
