@@ -1,6 +1,7 @@
 package com.ejercicios.SA2.infrastructure.controllers;
 
 import com.ejercicios.SA2.application.services.FileService;
+import com.ejercicios.SA2.domain.entities.FilesEntity;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,11 +25,8 @@ public class FileController {
     }
 
     @PostMapping("/uploadFile")
-    public String uploadFile(@RequestParam("file")MultipartFile file, RedirectAttributes redirectAttributes) throws IOException {
+    public FilesEntity uploadFile(@RequestParam("file")MultipartFile file) throws IOException {
 
-        fileService.uploadFile(file);
-        redirectAttributes.addFlashAttribute("message", "You successfully uploaded " + file.getOriginalFilename()+"!");
-
-        return "redirect:/";
+        return fileService.uploadFile(file);
     }
 }

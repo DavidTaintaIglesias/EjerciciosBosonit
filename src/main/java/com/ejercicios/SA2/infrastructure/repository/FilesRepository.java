@@ -1,9 +1,9 @@
 package com.ejercicios.SA2.infrastructure.repository;
 
-import com.ejercicios.SA2.domain.entities.Files;
+import com.ejercicios.SA2.domain.entities.FilesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface FilesRepository extends JpaRepository<Files, Integer> {
+public interface FilesRepository extends JpaRepository<FilesEntity, Integer> {
 
-    Files findByName(String name);
+    FilesEntity findByName(String name);
 }

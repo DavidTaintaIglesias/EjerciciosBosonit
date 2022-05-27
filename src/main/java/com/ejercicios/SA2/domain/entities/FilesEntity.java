@@ -1,5 +1,6 @@
 package com.ejercicios.SA2.domain.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Files implements Serializable {
+public class FilesEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +30,9 @@ public class Files implements Serializable {
 
     @Column(name = "metadata")
     String metadata;
+
+    public FilesEntity(String name, LocalDate date){
+        this.name = name;
+        this.date = date;
+    }
 }
