@@ -23,9 +23,9 @@ public class PersonaRespositoryDBA1Impl {
     public List<PersonaDBA1> getData(HashMap<String, Object> conditions){
 
         //Creamos la consulta sobre nuestra entidad
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<PersonaDBA1> query = cb.createQuery(PersonaDBA1.class);
-        Root<PersonaDBA1> root = query.from(PersonaDBA1.class);
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();//Instancio CriteriaBuilder
+        CriteriaQuery<PersonaDBA1> query = cb.createQuery(PersonaDBA1.class);//Creamos la query(SELECT)
+        Root<PersonaDBA1> root = query.from(PersonaDBA1.class);//De que tabla saco los datos, entity
 
         //Creamos la lista para añadir a la query los comparadores de la busqueda
         List<Predicate> predicates = new ArrayList<>();
@@ -55,8 +55,8 @@ public class PersonaRespositoryDBA1Impl {
 
         query.select(root).where(predicates.toArray(new Predicate[predicates.size()]));//where(-> Creamos la consulta final con nuestro array de comparadores)
         return entityManager.createQuery(query)//Ejecutamos la consulta en nuestra tabla
-                .setMaxResults(1)//Maximos resultados de la página
-                .setFirstResult(0)//resultado que queremos en primer lugar
+                //.setMaxResults(1)//Maximos resultados de la página
+                //.setFirstResult(0)//resultado que queremos en primer lugar
                 .getResultList();//Obtener la lista de resultados
     }
 }

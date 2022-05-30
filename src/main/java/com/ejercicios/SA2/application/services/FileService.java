@@ -5,10 +5,12 @@ import com.ejercicios.SA2.infrastructure.repository.FilesRepository;
 import com.ejercicios.shared.exceptions.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
@@ -59,10 +61,31 @@ public class FileService {
 
         FilesEntity fileEntity = repository.findByName(name).orElseThrow(()-> new NotFound("name not found"));
 
-        MultipartFile file = (MultipartFile) fileEntity;
+        Path fileLocation = Paths
+                .get(fileEntity.getDir() + File.separator + fileEntity.getName());
 
         Path copyLocation = Paths
                 .get(downloadDir + File.separator + fileEntity.getName());
-        Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+
+        UrlResource resource = new UrlResource(copyLocation.toUri());
+
+        Files.copy(fileLocation, copyLocation, StandardCopyOption.REPLACE_EXISTING);
+
+    }
+
+    public void downloadById(Integer id) throws Exception{
+
+        FilesEntity fileEntity = repository.findById(id).orElseThrow(()-> new NotFound("name not found"));
+
+        Path fileLocation = Paths
+                .get(fileEntity.getDir() + File.separator + fileEntity.getName());
+
+        Path copyLocation = Paths
+                .get(downloadDir + File.separator + fileEntity.getName());
+
+        UrlResource resource = new UrlResource(copyLocation.toUri());
+
+        Files.copy(fileLocation, copyLocation, StandardCopyOption.REPLACE_EXISTING);
+
     }
 }

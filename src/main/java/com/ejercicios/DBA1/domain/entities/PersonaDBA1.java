@@ -18,7 +18,7 @@ import java.time.LocalDate;
 public class PersonaDBA1 {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PersonId")
     Integer id;
 

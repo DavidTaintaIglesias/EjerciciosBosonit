@@ -31,10 +31,20 @@ public class FileController {
         return fileService.uploadFile(file);
     }
 
-    @GetMapping("/downloadFile/byName")
-    public String downloadFile(@RequestParam String name) throws Exception {
+    @GetMapping("/downloadFile")
+    public String downloadFile(@RequestParam(required = false) String name, @RequestParam(required = false) Integer id) throws Exception {
 
-        fileService.downloadByName(name);
-        return "file downloaded";
+        if(name!=null){
+
+            fileService.downloadByName(name);
+            return "file downloaded";
+        }
+
+        if(id!=null){
+
+            fileService.downloadById(id);
+            return "file downloaded";
+        }
+        return "file not found";
     }
 }
